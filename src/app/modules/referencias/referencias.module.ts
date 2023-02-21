@@ -3,11 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { ReferenciasRoutingModule } from './referencias-routing.module';
 import { CadReferenciasComponent } from './cad-referencias/cad-referencias.component';
+import { ListReferenciasComponent } from './components/list-referencias/list-referencias.component';
+import { EditReferenciaComponent } from './components/edit-referencia/edit-referencia.component';
 
 
 @NgModule({
   declarations: [
-    CadReferenciasComponent
+    CadReferenciasComponent,
+    ListReferenciasComponent,
+    EditReferenciaComponent
   ],
   imports: [
     CommonModule,
