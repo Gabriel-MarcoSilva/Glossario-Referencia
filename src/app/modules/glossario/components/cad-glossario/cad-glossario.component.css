@@ -1,0 +1,8 @@
+.nav-cad-glossario{
+    display: grid;
+    align-items: center;
+    width: 100%;
+    height: 3vh;
+    grid-template-columns: 10% 90%;
+    text-align: center;
+}

@@ -3,13 +3,13 @@
 <section class="container-list">
     <div class="nav-list">
         <section class="switch-title">
-            <h1> < </h1>
+            <a class="container-list-img" routerLink=""> <img src={{imageBack}} /> </a>
             <h1>Glossário</h1>
-            <h1> > </h1>
+            <a class="container-list-img" routerLink="/referencias"> <img src={{imageNext}} /> </a>
         </section>
         <section class="search-item">
-            <button (click)="cad()" >+ Nova palavra</button>
-            <input type="text" placeholder="buscar palavra"/>
+            <button (click)="cad()">+ Nova palavra</button>
+            <input type="text" placeholder="buscar palavra" />
         </section>
     </div>
     <div class="header-list">
@@ -30,7 +30,7 @@
         </a>
     </div>
     <div class="button-list">
-        <button (click)="back()" > < </button>
-        <button (click)="next()" > > </button>
+        <button (click)="back()"> < </button>
+        <button (click)="next()"> > </button>
     </div>
 </section>

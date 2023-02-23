@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class CadGlossarioComponent {
 
+  public imageBack: String = "../../../../../assets/back.png"
+
+
 }

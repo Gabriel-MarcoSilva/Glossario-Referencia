@@ -8,20 +8,23 @@ import { Router } from '@angular/router';
 })
 export class ListGlossarioComponent {
 
+  public imageNext: String = "../../../../../assets/next.png"
+  public imageBack: String = "../../../../../assets/back.png"
+
   constructor(
     private router: Router
-  ){}
-
-  next(){
+  ) { }
+  
+  next() {
     alert("proximo")
   }
 
-  back(){
+  back() {
     alert("anterior")
   }
 
-  cad(){
-    this.router.navigate(['/cad-glossario']);
+  cad() {
+    this.router.navigate(['/glossario/cad-glossario'])
   }
 
 }

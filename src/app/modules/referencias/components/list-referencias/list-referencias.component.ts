@@ -9,12 +9,26 @@ import { Router } from '@angular/router';
 export class ListReferenciasComponent {
 
   public id!: number;
+  public imageNext: String = "../../../../../assets/next.png"
+  public imageBack: String = "../../../../../assets/back.png"
 
   constructor(
     private route: Router
-  ){}
+  ) { }
 
-  edit(id: number){
+  next() {
+    alert("proximo")
+  }
+
+  back() {
+    alert("anterior")
+  }
+
+  cad() {
+    this.route.navigate(['/glossario/cad-glossario'])
+  }
+
+  edit(id: number) {
     const bloco = document.querySelectorAll(".item-list")[id] as HTMLElement
 
     this.route.navigate([`edit/${id}`])

@@ -1,20 +1,36 @@
 <a routerLink="">Voltar</a>
 
 <section class="container-list">
+    <div class="nav-list">
+        <section class="switch-title">
+            <a class="container-list-img" routerLink=""> <img src={{imageBack}} /> </a>
+            <h1>Referências</h1>
+            <a class="container-list-img" routerLink="/glossario"> <img src={{imageNext}} /> </a>
+        </section>
+        <section class="search-item">
+            <button (click)="cad()">+ Nova referencia</button>
+            <input type="text" placeholder="buscar referencia" />
+        </section>
+    </div>
     <div class="header-list">
         <h1> # </h1>
-        <h1> Título</h1>
-        <h1> Autor </h1>
+        <h1> Palavra-chave</h1>
+        <h1> Descrição </h1>
     </div>
     <div class="content-list">
-        <a class="item-list" routerLink="edit/0" >
+        <a class="item-list" routerLink="edit/0">
+            <p> 0 </p>
+            <p> Onomatopeia </p>
+            <p> sdklajdlskdjas,nme,mn kj ljlkj lkjslkj lkjlkj h jkbkjnk nlkml mlnk bhkbhjv </p>
+        </a>
+        <a class="item-list" routerLink="edit/0">
             <p> 0 </p>
             <p> Onomatopeia </p>
             <p> sdklajdlskdjas,nme,mn kj ljlkj lkjslkj lkjlkj h jkbkjnk nlkml mlnk bhkbhjv </p>
         </a>
     </div>
     <div class="button-list">
-        <button> < </button>
-        <button> > </button>
+        <button (click)="back()"> < </button>
+        <button (click)="next()"> > </button>
     </div>
 </section>
