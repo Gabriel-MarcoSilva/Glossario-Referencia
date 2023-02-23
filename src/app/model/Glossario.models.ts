@@ -1,4 +1,4 @@
-export class Todo{
+export class Glossario{
     constructor(
         public id: number,
         public keyWord: string,
