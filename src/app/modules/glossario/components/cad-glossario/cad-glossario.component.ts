@@ -21,7 +21,9 @@ export class CadGlossarioComponent {
   ){
     this.form = this.fb.group({
       keyWord:['', Validators.required],
-      description:['', Validators.required]
+      description:['', Validators.required],
+      created_at:[''],
+      updated_at:[''],
     })
   }
 
@@ -31,18 +33,18 @@ export class CadGlossarioComponent {
     const description = this.form.controls["description"].value
     const created_at = this.date()
 
-    this.glossario.push(new Glossario(0, keyWord, description, created_at, ""))
+    this.glossario.push(new Glossario("kjlkjlkjlkj" + keyWord, 9, keyWord, description, created_at, ""))
 
     console.log(this.glossario)
 
     this.save()
   }
 
-  save(){
+  save(){ // ainda ta dando erro
     this.local.setGlossario(this.glossario).subscribe((res) => {
       alert('Cultura cadastrada com sucesso.');
     }, err => {
-      alert( err);
+      console.log( err);
     })
   }
 

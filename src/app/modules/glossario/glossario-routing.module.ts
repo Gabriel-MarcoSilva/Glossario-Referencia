@@ -6,7 +6,7 @@ import { ListGlossarioComponent } from './components/list-glossario/list-glossar
 
 const routes: Routes = [
   {path:"", component:ListGlossarioComponent},
-  {path:"edit/:id", component: EditGlossarioComponent},
+  {path:"edit/:_id", component: EditGlossarioComponent},
   {path:"cad-glossario", component: CadGlossarioComponent}
 ];
 

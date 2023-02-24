@@ -1,5 +1,6 @@
 export class Glossario{
     constructor(
+        public _id: String,
         public id: Number,
         public keyWord: String,
         public description: String,

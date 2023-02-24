@@ -3,16 +3,16 @@
 <section class="container-list">
     <div class="nav-list">
         <section class="switch-title">
-            <a class="material-icons" routerLink="">  arrow_back </a>
+            <a class="material-icons" routerLink=""> arrow_back </a>
             <h1>Glossário</h1>
-            <a class="material-icons" routerLink="/referencias">  arrow_forward </a>
+            <a class="material-icons" routerLink="/referencias"> arrow_forward </a>
         </section>
         <section class="search-item">
             <button (click)="cad()">+ Nova palavra</button>
-                <mat-form-field appearance="outline">
-                    <mat-label>Buscar Palavra</mat-label>
-                    <input matInput #input maxlength="10" placeholder="Ex: Onomatopeia" />
-                </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Buscar Palavra</mat-label>
+                <input matInput #input maxlength="10" placeholder="Ex: Onomatopeia" />
+            </mat-form-field>
         </section>
     </div>
     <section class="block-cad" *ngIf="cadOk">
@@ -26,21 +26,15 @@
         <h1> Palavra-chave</h1>
         <h1> Descrição </h1>
     </div>
-    <div class="content-list">
-        <a class="item-list" routerLink="edit/0">
-            <p> 0 </p>
-            <p> Onomatopeia </p>
-            <p> sdklajdlskdjas,nme,mn kj ljlkj lkjslkj lkjlkj h jkbkjnk nlkml mlnk bhkbhjv </p>
-        </a>
-        <a class="item-list" routerLink="edit/0">
-            <p> 0 </p>
-            <p> Onomatopeia </p>
-            <p> sdklajdlskdjas,nme,mn kj ljlkj lkjslkj lkjlkj h jkbkjnk nlkml mlnk bhkbhjv </p>
+    <div class="content-list" *ngFor="let item of itens">
+        <a class="item-list" routerLink="edit/{{item._id}}">
+            <p> {{item.id}}</p>
+            <p> {{item.keyWord}} </p>
+            <p> {{item.description}} </p>
         </a>
     </div>
     <div class="button-list">
-        <button (click)="back()">
-            < </button>
-                <button (click)="next()"> > </button>
+        <button (click)="back()" class="material-icons"> arrow_back </button>
+        <button (click)="next()" class="material-icons"> arrow_forward </button>
     </div>
 </section>

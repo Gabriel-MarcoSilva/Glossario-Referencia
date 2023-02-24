@@ -1,5 +1,7 @@
 import { Component, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Glossario } from 'src/app/model/Glossario.models';
+import { GlossarioService } from 'src/app/services/glossario/glossario.service';
 
 @Component({
   selector: 'app-list-glossario',
@@ -10,13 +12,15 @@ export class ListGlossarioComponent {
 
   public cadOk: Boolean = false
 
-  public imageNext: String = "../../../../../assets/next.png"
-  public imageBack: String = "../../../../../assets/back.png"
+  public itens!: Glossario[]
 
   constructor(
-    private router: Router
-  ) { }
-  
+    private router: Router,
+    private service: GlossarioService
+  ) { 
+    this.load()
+  }
+
   next() {
     alert("proximo")
   }
@@ -29,5 +33,11 @@ export class ListGlossarioComponent {
     //this.router.navigate(['/glossario/cad-glossario'])
     this.cadOk = !this.cadOk
   }
-
+  
+  load(){
+    
+    this.service.getGlossario().subscribe(data => {
+      return this.itens = data;
+    })
+  }
 }
