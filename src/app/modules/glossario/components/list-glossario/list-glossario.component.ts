@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-glossario.component.css']
 })
 export class ListGlossarioComponent {
+
+  public cadOk: Boolean = false
 
   public imageNext: String = "../../../../../assets/next.png"
   public imageBack: String = "../../../../../assets/back.png"
@@ -24,7 +26,8 @@ export class ListGlossarioComponent {
   }
 
   cad() {
-    this.router.navigate(['/glossario/cad-glossario'])
+    //this.router.navigate(['/glossario/cad-glossario'])
+    this.cadOk = !this.cadOk
   }
 
 }

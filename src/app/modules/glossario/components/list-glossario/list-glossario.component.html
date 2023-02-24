@@ -3,15 +3,24 @@
 <section class="container-list">
     <div class="nav-list">
         <section class="switch-title">
-            <a class="container-list-img" routerLink=""> <img src={{imageBack}} /> </a>
+            <a class="material-icons" routerLink="">  arrow_back </a>
             <h1>Glossário</h1>
-            <a class="container-list-img" routerLink="/referencias"> <img src={{imageNext}} /> </a>
+            <a class="material-icons" routerLink="/referencias">  arrow_forward </a>
         </section>
         <section class="search-item">
             <button (click)="cad()">+ Nova palavra</button>
-            <input type="text" placeholder="buscar palavra" />
+                <mat-form-field appearance="outline">
+                    <mat-label>Buscar Palavra</mat-label>
+                    <input matInput #input maxlength="10" placeholder="Ex: Onomatopeia" />
+                </mat-form-field>
         </section>
     </div>
+    <section class="block-cad" *ngIf="cadOk">
+        <div
+            [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}">
+            <app-cad-glossario (CadOk)="cad()"></app-cad-glossario>
+        </div>
+    </section>
     <div class="header-list">
         <h1> # </h1>
         <h1> Palavra-chave</h1>
@@ -30,7 +39,8 @@
         </a>
     </div>
     <div class="button-list">
-        <button (click)="back()"> < </button>
-        <button (click)="next()"> > </button>
+        <button (click)="back()">
+            < </button>
+                <button (click)="next()"> > </button>
     </div>
 </section>

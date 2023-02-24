@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-.container-list,
-.container-cad-glossario {
+.container-list{
     height: 75vh;
     width: 55vw;
     padding: 20px;
@@ -12,28 +11,15 @@
     flex-direction: column;
 }
 
-.switch-title {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
 .container-list .search-item {
-    width: 100%;
+    width: 99%;
     display: grid;
     grid-template-columns: 15% 85%;
     column-gap: 5px;
+    align-content: center;
+    grid-template-rows: 6vh;
+    justify-content: space-between;
     margin-bottom: 10px;
-}
-
-.container-list .search-item input {
-    width: 98%;
-    height: 4vh;
-    border-radius: 5px;
-    border: 1px solid #cfcfcf;
-    color: #cfcfcf;
-    padding: 5px;
-    font-size: 12pt;
 }
 
 .container-list .search-item button {
@@ -43,6 +29,7 @@
     border: 2px solid #28a745;
     color: #28a745;
     border-radius: 0.25em;
+    height: 6vh;
 }
 
 .container-list .search-item button:hover {
@@ -121,8 +108,17 @@
 .switch-title {
     font-size: 12pt;
     font-family: roboto, sans-serif;
-    display: flex;
     align-items: center;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.switch-title a{
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .container-list-img {
@@ -131,6 +127,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .container-list-img img {

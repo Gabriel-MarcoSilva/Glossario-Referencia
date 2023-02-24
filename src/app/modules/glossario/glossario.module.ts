@@ -6,6 +6,12 @@ import { CadGlossarioComponent } from './components/cad-glossario/cad-glossario.
 import { ListGlossarioComponent } from './components/list-glossario/list-glossario.component';
 import { EditGlossarioComponent } from './components/edit-glossario/edit-glossario.component';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +21,13 @@ import { EditGlossarioComponent } from './components/edit-glossario/edit-glossar
   ],
   imports: [
     CommonModule,
-    GlossarioRoutingModule
+    GlossarioRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class GlossarioModule { }
