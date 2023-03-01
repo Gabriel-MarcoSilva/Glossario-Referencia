@@ -100,7 +100,7 @@ export class ListGlossarioComponent {
 
     const target = e.target as HTMLInputElement
 
-    const value = target.value
+    const value = target.value.toLowerCase()
 
     console.log(value)
 
