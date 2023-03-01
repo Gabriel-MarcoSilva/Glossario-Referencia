@@ -4,3 +4,8 @@
     justify-content: center;
     align-items: center;
  }
+
+ .list-a-edit{
+   cursor: pointer;
+   display: none;
+ }

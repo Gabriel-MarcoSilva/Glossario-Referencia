@@ -13,55 +13,99 @@ export class ListGlossarioComponent {
   public cadOk: Boolean = false
   public editOk: Boolean = false
   public itens!: Glossario[]
+  public it!: Glossario[]
   public value!: Glossario
 
   public algo!: Number
   public size!: number
 
+  quantidade = 10; inicio = 0;
+
+  searchTerm: String = ""
+
   constructor(
     private router: Router,
     private service: GlossarioService
-  ) { 
+  ) {
     this.load()
   }
 
   next() {
-    alert("proximo")
+    if (this.size > this.quantidade) {
+      this.quantidade += 10
+      this.inicio += 10
+    }
   }
 
   back() {
-    alert("anterior")
+    if (this.inicio != 0) {
+      this.quantidade -= 10
+      this.inicio -= 10
+    }
   }
 
   cad() {
-    //this.router.navigate(['/glossario/cad-glossario'])
     this.cadOk = !this.cadOk
   }
 
-  edit(){
+  edit() {
     this.editOk = !this.editOk
-    console.log("oi")
   }
-  
-  load(){
+
+  load() {
     this.service.getGlossario().subscribe(data => {
-      this.size = data.length
-      return this.itens = data;
+
+      const i = data.length
+      let dado!: Number
+
+      data.map((j) => {
+        for (let k = i; k > i - 1; k--) {
+          dado = j.id
+        }
+      })
+
+      this.size = parseInt(dado.toString()) + 1
+
+      this.it = data
+      this.itens = data;
     })
   }
 
-  Edit(id: Number){
+  Expandir(id: Number) {
+    const ID = parseInt(id.toString()) - this.inicio
+    const item = document.querySelectorAll(".item-list")[ID] as HTMLElement
 
-    this.itens.map((item) =>{
-      if(item.id === id){
+    if (item.style.maxHeight == "5vh" || item.style.maxHeight == "") {
+      item.style.maxHeight = "10vh"
+    } else {
+      item.style.maxHeight = "5vh"
+    }
+
+  }
+
+  Edit(id: Number) {
+
+    this.itens.map((item) => {
+      if (item.id === id) {
         this.value = item
         this.algo = id
       }
     })
 
-    console.log(this.value)
-
-   // this.service.getGlossarioById(id).subscribe(item => console.log(item))
+    // this.service.getGlossarioById(id).subscribe(item => console.log(item))
     this.editOk = !this.editOk
+  }
+
+  search(e: Event): void {
+
+    const target = e.target as HTMLInputElement
+
+    const value = target.value
+
+    console.log(value)
+
+    this.it = this.itens.filter((m) => 
+      m.keyWord.toLowerCase().includes(value)
+    )
   }
 }

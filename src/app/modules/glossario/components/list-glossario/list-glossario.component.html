@@ -11,7 +11,7 @@
             <button (click)="cad()">+ Nova palavra</button>
             <mat-form-field appearance="outline">
                 <mat-label>Buscar Palavra</mat-label>
-                <input matInput #input maxlength="10" placeholder="Ex: Onomatopeia" />
+                <input matInput #input maxlength="10" placeholder="Ex: Onomatopeia" (input)="search($event)" />
             </mat-form-field>
         </section>
     </div>
@@ -28,12 +28,15 @@
     </div>
     <div class="content-list">
 
-        <section *ngFor="let item of itens">
-            <a class="item-list" (click)="Edit(item.id)">
-                <p> {{item.id}}</p>
-                <p> {{item.keyWord}} </p>
-                <p> {{item.description}} </p>
-            </a>
+        <section *ngFor="let item of it">
+            <div *ngIf="item.id < quantidade && item.id >= inicio">
+                <a class="item-list"(click)="Expandir(item.id)" >
+                    <p> {{item.id}}</p>
+                    <p class="list-p-keyWord"> {{item.keyWord}} </p>
+                    <p class="list-p-description"> {{item.description}} </p>
+                </a>
+                <a (click)="Edit(item.id)" class="list-a-edit">Editar</a>
+            </div>
         </section>
         <div [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}"
             *ngIf="editOk">
@@ -42,11 +45,8 @@
 
     </div>
     <div class="button-list">
-        <button (click)="back()" class="material-icons"> arrow_back </button>
-        <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="1"></mat-radio-button>
-            <mat-radio-button value="2"></mat-radio-button>
-        </mat-radio-group>
-        <button (click)="next()" class="material-icons"> arrow_forward </button>
+        <button (click)="back()" class="material-icons pass"> arrow_back </button>
+       
+        <button (click)="next()" class="material-icons pass"> arrow_forward </button>
     </div>
 </section>
