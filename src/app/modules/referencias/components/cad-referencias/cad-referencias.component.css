@@ -1,0 +1,51 @@
+.nav-cad-glossario{
+    display: grid;
+    align-items: center;
+    width: 100%;
+    height: 3vh;
+    grid-template-columns: 90% 10%;
+    text-align: start;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.nav-cad-glossario h1{
+    margin: 0;
+}
+
+.container-cad-glossario{
+    padding: 10px;
+    width: 20vw;
+    height: 50vh;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
+    background-color: #fff;
+    border-radius: 0.5em;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 25vh auto;
+}
+
+.cad-form{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-top: 5em;
+    height: 30vh;
+}
+
+.button-cad-material{
+    height: 5vh;
+}
+
+.cad-button-form{
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+}
+
+hr{
+    border: 1px solid #cfcfcfb7;
+
+}

@@ -12,6 +12,9 @@ export class ListReferenciasComponent {
   public imageNext: String = "../../../../../assets/next.png"
   public imageBack: String = "../../../../../assets/back.png"
 
+  public cadOk: Boolean = false
+
+
   constructor(
     private route: Router
   ) { }
@@ -25,7 +28,8 @@ export class ListReferenciasComponent {
   }
 
   cad() {
-    this.route.navigate(['/glossario/cad-glossario'])
+    //this.route.navigate(['/glossario/cad-glossario'])
+    this.cadOk = !this.cadOk
   }
 
   edit(id: number) {

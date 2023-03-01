@@ -11,8 +11,12 @@ import { GlossarioService } from 'src/app/services/glossario/glossario.service';
 export class ListGlossarioComponent {
 
   public cadOk: Boolean = false
-
+  public editOk: Boolean = false
   public itens!: Glossario[]
+  public value!: Glossario
+
+  public algo!: Number
+  public size!: number
 
   constructor(
     private router: Router,
@@ -33,11 +37,31 @@ export class ListGlossarioComponent {
     //this.router.navigate(['/glossario/cad-glossario'])
     this.cadOk = !this.cadOk
   }
+
+  edit(){
+    this.editOk = !this.editOk
+    console.log("oi")
+  }
   
   load(){
-    
     this.service.getGlossario().subscribe(data => {
+      this.size = data.length
       return this.itens = data;
     })
+  }
+
+  Edit(id: Number){
+
+    this.itens.map((item) =>{
+      if(item.id === id){
+        this.value = item
+        this.algo = id
+      }
+    })
+
+    console.log(this.value)
+
+   // this.service.getGlossarioById(id).subscribe(item => console.log(item))
+    this.editOk = !this.editOk
   }
 }

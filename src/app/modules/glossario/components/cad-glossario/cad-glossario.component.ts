@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Glossario } from 'src/app/model/Glossario.models';
 import { GlossarioService } from 'src/app/services/glossario/glossario.service';
@@ -11,55 +11,57 @@ import { GlossarioService } from 'src/app/services/glossario/glossario.service';
 export class CadGlossarioComponent {
 
   @Output() CadOk: EventEmitter<any> = new EventEmitter()
+  @Input() size!: number
 
   public form!: FormGroup
-  public glossario: Glossario[] = [] 
+  public glossario!: Glossario
 
   constructor(
     private fb: FormBuilder,
-    private local: GlossarioService
-  ){
+    private service: GlossarioService
+  ) {
     this.form = this.fb.group({
-      keyWord:['', Validators.required],
-      description:['', Validators.required],
-      created_at:[''],
-      updated_at:[''],
+      keyWord: ['', Validators.required],
+      description: ['', Validators.required],
+      created_at: [''],
+      updated_at: [''],
     })
   }
 
-  onSubmit(){
+  onSubmit() {
 
     const keyWord = this.form.controls["keyWord"].value
     const description = this.form.controls["description"].value
     const created_at = this.date()
 
-    this.glossario.push(new Glossario("kjlkjlkjlkj" + keyWord, 9, keyWord, description, created_at, ""))
+    this.glossario = (new Glossario(this.size  , keyWord, description, created_at, "--"))
 
     console.log(this.glossario)
 
     this.save()
   }
 
-  save(){ // ainda ta dando erro
-    this.local.setGlossario(this.glossario).subscribe((res) => {
-      alert('Cultura cadastrada com sucesso.');
+  save() { // ainda ta dando erro
+    this.service.setGlossario(this.glossario).subscribe((res) => {
+      window.location.reload()
     }, err => {
-      console.log( err);
+      console.log(err);
     })
   }
 
-  date(){
+  date() {
     const data = new Date();
 
-    const DD = String(data.getDate()).padStart(2,"0") //pega o dia
-    const MM = String(data.getMonth() + 1).padStart(2,"0") //pega o mês
+    const DD = String(data.getDate()).padStart(2, "0") //pega o dia
+    const MM = String(data.getMonth() + 1).padStart(2, "0") //pega o mês
     const YY = data.getFullYear() //pega o ano
 
-    const date:String = `${DD}/${MM}/${YY}`
+    const date: String = `${DD}/${MM}/${YY}`
 
     return date
   }
-  trade(){
+
+  trade() {
     this.CadOk.emit()
   }
 }

@@ -9,7 +9,10 @@
         </section>
         <section class="search-item">
             <button (click)="cad()">+ Nova referencia</button>
-            <input type="text" placeholder="buscar referencia" />
+            <mat-form-field appearance="outline">
+                <mat-label>Buscar Referência</mat-label>
+                <input matInput #input maxlength="10" placeholder="Ex: Onomatopeia" />
+            </mat-form-field>
         </section>
     </div>
     <div class="header-list">
@@ -17,6 +20,12 @@
         <h1> Palavra-chave</h1>
         <h1> Descrição </h1>
     </div>
+    <section class="block-cad" *ngIf="cadOk">
+        <div
+            [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}">
+            <app-cad-referencias (CadOk)="cad()"></app-cad-referencias>
+        </div>
+    </section>
     <div class="content-list">
         <a class="item-list" routerLink="edit/0">
             <p> 0 </p>
@@ -30,7 +39,7 @@
         </a>
     </div>
     <div class="button-list">
-        <button (click)="back()"> < </button>
-        <button (click)="next()"> > </button>
+        <button (click)="back()" class="material-icons"> arrow_back </button>
+        <button (click)="next()" class="material-icons"> arrow_forward </button>
     </div>
 </section>

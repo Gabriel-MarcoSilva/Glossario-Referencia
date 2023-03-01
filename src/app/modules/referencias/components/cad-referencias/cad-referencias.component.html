@@ -1,2 +1,39 @@
-<p>cad-referencias works!</p>
-<a routerLink="">Voltar</a>
+<section class="container-cad-glossario">
+    <section class="nav-cad-glossario">
+        <h1>Novo Glossário</h1>
+        <a [style]="{fontSize:'25pt', cursor: 'pointer'}" (click)="trade()"> &times; </a>
+    </section>
+
+    <hr />
+
+    <mat-card class="cad-form" [formGroup]="form">
+        <mat-form-field appearance="outline">
+            <mat-label>Palavra</mat-label>
+            <input formControlName="keyWord" matInput #input maxlength="10" placeholder="Digite a Palavra" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Descrição</mat-label>
+            <textarea formControlName="description" matInput placeholder="Escreva aqui a descrição da palavra acima"
+                required rows="5"></textarea>
+        </mat-form-field>
+
+        <input type="hidden" formContrlName="created_at" />
+        <input type="hidden" formContrlName="updated_at" />
+    </mat-card>
+
+    <hr />
+
+    <section class="cad-button-form">
+        <button mat-raised-button class="button-cad-material" [style]="{border:'1px solid #dc3545', color: '#dc3545'}"
+            (click)="trade()">
+            Cancelar
+        </button>
+        <button mat-raised-button class="button-cad-material" [style]="{border:'1px solid #28a745', color: '#28a745'}"
+            >
+            Confirmar
+        </button>
+
+    </section>
+
+</section>

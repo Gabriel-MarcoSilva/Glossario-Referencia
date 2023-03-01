@@ -12,36 +12,43 @@ export class GlossarioService {
   private baseUrl = "http://localhost:4000"
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
   ) { }
 
-  //listagem das palavras cadastradas
+  //listagem das palavras cadastradas (ok)
 
   getGlossario(): Observable<Glossario[]>{ 
     return this.http.get<Glossario[]>(`${this.baseUrl}/glossario`)
   }
 
-  //apagar
-  gettGlossario(){
-    return  localStorage.getItem('iuoi')
-  }
+  //cadastro de novo glossario (ok)
 
-  //cadastro de novo glossario
-
-  setGlossario(data: any): Observable<Glossario[]> {
-    return this.http.post<Glossario[]>(`${this.baseUrl}/cad-glossario`, data).pipe(take(1))
+  setGlossario(data: any): Observable<Glossario> {
+    console.log("data", data)
+    return this.http.post<Glossario>(`${this.baseUrl}/cad-glossario`, data)
    }
 
   //editar palavra no glossario
 
-  editGlossario() { }
+  editGlossario(id: String, data: FormData): Observable<FormData> {
+    const url = `${this.baseUrl}/glossario/${id}`
+    return this.http.post<FormData>(url, data)
+   }
 
   //listar palavra no glossario específico
 
-  getGlossarioById() { }
+  getGlossarioById(id: String): Observable<Glossario> { 
+    const url = `${this.baseUrl}/glossario/${id}`
+    return this.http.get<Glossario>(url)
 
-  //deletar uma palavra no glossario
+  }
 
-  deleteGlossario() { }
+  //deletar uma palavra no glossario (ok)
+
+  deleteGlossario(id: Number) { 
+   // console.log(id)
+    const url = `${this.baseUrl}/delet-glossario/${id}`
+    return this.http.delete(url)
+  }
 
 }

@@ -45,8 +45,8 @@
 }
 
 .container-list .header-list h1 {
-    margin-right: 50px;
     font-size: 15pt;
+    margin: 5px 50px 5px 5px;
 }
 
 .container-list .content-list {
@@ -65,7 +65,7 @@
 
 .container-list .button-list button {
     border: 2px solid #28a745;
-    padding: 0.5em 0.75em;
+    padding: 0.15em 0.25em;
     border-radius: 0.25em;
     color: #28a745;
     background-color: transparent;

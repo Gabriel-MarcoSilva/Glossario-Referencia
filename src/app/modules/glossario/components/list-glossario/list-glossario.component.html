@@ -18,7 +18,7 @@
     <section class="block-cad" *ngIf="cadOk">
         <div
             [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}">
-            <app-cad-glossario (CadOk)="cad()"></app-cad-glossario>
+            <app-cad-glossario (CadOk)="cad()" [size]="size"></app-cad-glossario>
         </div>
     </section>
     <div class="header-list">
@@ -26,15 +26,27 @@
         <h1> Palavra-chave</h1>
         <h1> Descrição </h1>
     </div>
-    <div class="content-list" *ngFor="let item of itens">
-        <a class="item-list" routerLink="edit/{{item._id}}">
-            <p> {{item.id}}</p>
-            <p> {{item.keyWord}} </p>
-            <p> {{item.description}} </p>
-        </a>
+    <div class="content-list">
+
+        <section *ngFor="let item of itens">
+            <a class="item-list" (click)="Edit(item.id)">
+                <p> {{item.id}}</p>
+                <p> {{item.keyWord}} </p>
+                <p> {{item.description}} </p>
+            </a>
+        </section>
+        <div [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}"
+            *ngIf="editOk">
+            <app-edit-glossario (EditOk)="edit()" [info]="value" [ID]="algo" *ngIf="editOk"></app-edit-glossario>
+        </div>
+
     </div>
     <div class="button-list">
         <button (click)="back()" class="material-icons"> arrow_back </button>
+        <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1"></mat-radio-button>
+            <mat-radio-button value="2"></mat-radio-button>
+        </mat-radio-group>
         <button (click)="next()" class="material-icons"> arrow_forward </button>
     </div>
 </section>
