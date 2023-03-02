@@ -17,27 +17,27 @@ export class EditGlossarioComponent {
 
   public form!: FormGroup
 
-  constructor( 
-      private service: GlossarioService
-    ){
-  }
+  constructor(
+    private service: GlossarioService
+  ) { }
 
-  ngOnInit(){
+  ngOnInit() {
 
     this.form = new FormGroup({
+      id: new FormControl(this.ID, Validators.required),
       keyWord: new FormControl(this.info ? this.info.keyWord : '', Validators.required),
       description: new FormControl(this.info ? this.info.description : '', Validators.required),
       created_at: new FormControl(this.info ? this.info.created_at : '', Validators.required),
       updated_at: new FormControl(this.date())
     })
-    
+
   }
 
-  trade(){
+  trade() {
     this.EditOk.emit()
   }
 
-  onSubmit(){
+  async onSubmit() {
 
     const formData = new FormData()
 
@@ -46,31 +46,27 @@ export class EditGlossarioComponent {
     formData.append('created_at', this.form.value.created_at)
     formData.append('updated_at', this.form.value.updated_at)
 
+    const id = parseInt(this.ID.toString())
 
-    console.log(formData)
-    /*
-   
-    this.service.editGlossario(this.ID!, formData).subscribe()*/
-  }
-
-  delete(){
-   // console.log(this.info.id)
-    this.service.deleteGlossario(this.info.id).subscribe(res => {
+    await this.service.editGlossario(id!, this.form.value).subscribe(res => {
       window.location.reload()
-    }, err => {
-      console.log('error', err );
-      
     })
   }
 
-  date(){
+  delete() {
+    this.service.deleteGlossario(this.info.id).subscribe((res) => {
+      window.location.reload()
+    })
+  }
+
+  date() {
     const data = new Date();
 
-    const DD = String(data.getDate()).padStart(2,"0") //pega o dia
-    const MM = String(data.getMonth() + 1).padStart(2,"0") //pega o mês
+    const DD = String(data.getDate()).padStart(2, "0") //pega o dia
+    const MM = String(data.getMonth() + 1).padStart(2, "0") //pega o mês
     const YY = data.getFullYear() //pega o ano
 
-    const date:String = `${DD}/${MM}/${YY}`
+    const date: String = `${DD}/${MM}/${YY}`
 
     return date
   }

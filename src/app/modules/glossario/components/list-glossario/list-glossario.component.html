@@ -30,12 +30,12 @@
 
         <section *ngFor="let item of it">
             <div *ngIf="item.id < quantidade && item.id >= inicio">
-                <a class="item-list"(click)="Expandir(item.id)" >
+                <a class="item-list" (click)="Expandir(item.id)">
                     <p> {{item.id}}</p>
                     <p class="list-p-keyWord"> {{item.keyWord}} </p>
                     <p class="list-p-description"> {{item.description}} </p>
+                    <a (click)="Edit(item.id)" class="list-a-edit">Editar</a>
                 </a>
-                <a (click)="Edit(item.id)" class="list-a-edit">Editar</a>
             </div>
         </section>
         <div [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}"
@@ -46,7 +46,7 @@
     </div>
     <div class="button-list">
         <button (click)="back()" class="material-icons pass"> arrow_back </button>
-       
+
         <button (click)="next()" class="material-icons pass"> arrow_forward </button>
     </div>
 </section>

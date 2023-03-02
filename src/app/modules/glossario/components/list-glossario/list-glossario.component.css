@@ -7,5 +7,7 @@
 
  .list-a-edit{
    cursor: pointer;
-   display: none;
+   flex-direction: row-reverse;
+   display: flex;
+   align-items: center;
  }

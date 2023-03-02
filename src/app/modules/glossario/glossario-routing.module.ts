@@ -5,9 +5,9 @@ import { EditGlossarioComponent } from './components/edit-glossario/edit-glossar
 import { ListGlossarioComponent } from './components/list-glossario/list-glossario.component';
 
 const routes: Routes = [
-  {path:"", component:ListGlossarioComponent},
-  {path:"edit/:_id", component: EditGlossarioComponent},
-  {path:"cad-glossario", component: CadGlossarioComponent}
+  { path: "", component: ListGlossarioComponent },
+  { path: "edit/:_id", component: EditGlossarioComponent },
+  { path: "cad-glossario", component: CadGlossarioComponent }
 ];
 
 @NgModule({

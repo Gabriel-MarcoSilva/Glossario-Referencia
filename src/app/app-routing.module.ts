@@ -5,9 +5,9 @@ import { GlossarioModule } from './modules/glossario/glossario.module';
 import { ReferenciasModule } from './modules/referencias/referencias.module';
 
 const routes: Routes = [
-  {path: "", component: HomeComponent},
-  {path: "glossario", loadChildren: () => import("./modules/glossario/glossario.module").then((m) => GlossarioModule)},
-  {path: "referencias", loadChildren: () => import("./modules/referencias/referencias.module").then((m) => ReferenciasModule)}
+  { path: "", component: HomeComponent },
+  { path: "glossario", loadChildren: () => import("./modules/glossario/glossario.module").then((m) => GlossarioModule) },
+  { path: "referencias", loadChildren: () => import("./modules/referencias/referencias.module").then((m) => ReferenciasModule) }
 ];
 
 @NgModule({

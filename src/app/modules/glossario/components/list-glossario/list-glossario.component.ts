@@ -71,7 +71,7 @@ export class ListGlossarioComponent {
     })
   }
 
-  Expandir(id: Number) {
+  Expandir(id: Number) { //mostra a descrição de forma dinâmica
     const ID = parseInt(id.toString()) - this.inicio
     const item = document.querySelectorAll(".item-list")[ID] as HTMLElement
 
@@ -83,7 +83,7 @@ export class ListGlossarioComponent {
 
   }
 
-  Edit(id: Number) {
+  Edit(id: Number) { //chama o o form de edição
 
     this.itens.map((item) => {
       if (item.id === id) {
@@ -92,11 +92,10 @@ export class ListGlossarioComponent {
       }
     })
 
-    // this.service.getGlossarioById(id).subscribe(item => console.log(item))
     this.editOk = !this.editOk
   }
 
-  search(e: Event): void {
+  search(e: Event): void { //função de busca na lista
 
     const target = e.target as HTMLInputElement
 
@@ -104,7 +103,7 @@ export class ListGlossarioComponent {
 
     console.log(value)
 
-    this.it = this.itens.filter((m) => 
+    this.it = this.itens.filter((m) =>
       m.keyWord.toLowerCase().includes(value)
     )
   }
