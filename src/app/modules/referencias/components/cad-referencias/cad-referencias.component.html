@@ -1,6 +1,6 @@
-<section class="container-cad-glossario">
-    <section class="nav-cad-glossario">
-        <h1>Novo Glossário</h1>
+<section class="container-cad-referencia">
+    <section class="nav-cad-referencia">
+        <h1>Nova Referencia</h1>
         <a [style]="{fontSize:'25pt', cursor: 'pointer'}" (click)="trade()"> &times; </a>
     </section>
 
@@ -8,14 +8,48 @@
 
     <mat-card class="cad-form" [formGroup]="form">
         <mat-form-field appearance="outline">
-            <mat-label>Palavra</mat-label>
-            <input formControlName="keyWord" matInput #input maxlength="10" placeholder="Digite a Palavra" required />
+            <mat-label>Autor</mat-label>
+            <input formControlName="author" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Descrição</mat-label>
-            <textarea formControlName="description" matInput placeholder="Escreva aqui a descrição da palavra acima"
-                required rows="5"></textarea>
+            <mat-label>Título</mat-label>
+            <input formControlName="title" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Subtítulo</mat-label>
+            <input formControlName="subtitle" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Local de Publicação</mat-label>
+            <input formControlName="publication" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Editora</mat-label>
+            <input formControlName="publisher" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Ano de Publicação</mat-label>
+            <input formControlName="Year" matInput #input maxlength="50" placeholder="Digite a Palavra"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>N° da Edição </mat-label>
+            <input formControlName="numEdit" matInput #input maxlength="50" placeholder="Digite a Palavra"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Volume</mat-label>
+            <input formControlName="Vol" matInput #input maxlength="50" placeholder="Digite a Palavra"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Página</mat-label>
+            <input formControlName="Pag" matInput #input maxlength="50" placeholder="Digite a Palavra"/>
         </mat-form-field>
 
         <input type="hidden" formContrlName="created_at" />
@@ -30,7 +64,7 @@
             Cancelar
         </button>
         <button mat-raised-button class="button-cad-material" [style]="{border:'1px solid #28a745', color: '#28a745'}"
-            >
+            (click)="onSubmit()">
             Confirmar
         </button>
 
