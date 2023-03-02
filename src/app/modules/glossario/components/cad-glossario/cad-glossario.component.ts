@@ -34,7 +34,7 @@ export class CadGlossarioComponent {
     const description = this.form.controls["description"].value
     const created_at = this.date()
 
-    this.glossario = (new Glossario(this.size, keyWord, description, created_at, "--"))
+    this.glossario = (new Glossario(this.size  , keyWord, description, created_at, "--"))
 
     this.save()
   }
@@ -42,6 +42,8 @@ export class CadGlossarioComponent {
   save() { // ainda ta dando erro
     this.service.setGlossario(this.glossario).subscribe((res) => {
       window.location.reload()
+    }, err => {
+      console.log(err);
     })
   }
 

@@ -1,4 +1,4 @@
-.nav-cad-glossario{
+.nav-cad-referencia{
     display: grid;
     align-items: center;
     width: 100%;
@@ -9,14 +9,14 @@
     font-family: sans-serif;
 }
 
-.nav-cad-glossario h1{
+.nav-cad-referencia h1{
     margin: 0;
 }
 
-.container-cad-glossario{
+.container-cad-referencia{
     padding: 10px;
-    width: 20vw;
-    height: 50vh;
+    width: 40vw;
+    height: 55vh;
     box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
     background-color: #fff;
     border-radius: 0.5em;
@@ -28,11 +28,12 @@
 }
 
 .cad-form{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 18vw);
+    grid-gap: 5px;
     padding: 10px;
-    margin-top: 5em;
-    height: 30vh;
+    height: 40vh;
+    justify-content: center;
 }
 
 .button-cad-material{
