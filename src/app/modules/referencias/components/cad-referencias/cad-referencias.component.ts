@@ -15,6 +15,8 @@ export class CadReferenciasComponent {
 
   public referencia!: Referencia
 
+  public referencias!: Referencia[]
+
   constructor(
     private fb: FormBuilder,
     private service: ReferenciasService
@@ -32,6 +34,7 @@ export class CadReferenciasComponent {
       created_at: [''],
       updated_at: [''],
     })
+
   }
 
   onSubmit() {
@@ -47,17 +50,23 @@ export class CadReferenciasComponent {
     const title = this.form.controls["title"].value
     const created_at = this.date()
 
-
-    this.referencia = new Referencia(0, author, title, subtitle, numEdit, publisher, created_at, "--", publication, Pag, Vol, Year)
+    this.referencia = new Referencia(4, author, title, subtitle, numEdit, publisher, created_at, "--", publication, Pag, Vol, Year)
   
     console.log(this.referencia)
 
+    this.save()
   }
-
+  
+  save(){
+    this.service.cadRef(this.referencia).subscribe((res) => {
+      window.location.reload()
+    }, err => {
+      console.log(err);
+    })
+  }
 
   trade() {
     this.CadOk.emit()
-
   }
 
   date() {
