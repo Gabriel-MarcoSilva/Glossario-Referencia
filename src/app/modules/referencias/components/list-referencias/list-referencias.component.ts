@@ -12,10 +12,11 @@ export class ListReferenciasComponent {
 
   public id!: number;
   public size!: number
-  public imageNext: String = "../../../../../assets/next.png"
-  public imageBack: String = "../../../../../assets/back.png"
+  public algo!: Number
+  public value!: Referencia
 
   public cadOk: Boolean = false
+  public editOk: Boolean = false
 
   public Allreferencias!: Referencia[]
   public referencias!: Referencia[]
@@ -42,6 +43,8 @@ export class ListReferenciasComponent {
         }
       })
 
+      this.size = parseInt(dado.toString()) + 1
+
       this.referencias = data
       this.Allreferencias = data
     })
@@ -65,10 +68,20 @@ export class ListReferenciasComponent {
     this.cadOk = !this.cadOk
   }
 
-  edit(id: number) {
-    const bloco = document.querySelectorAll(".item-list")[id] as HTMLElement
+  edit() {
+    this.editOk = !this.editOk
+  }
 
-    this.route.navigate([`edit/${id}`])
+  Edit(id: Number) { //chama o o form de edição
+
+    this.Allreferencias.map((item) => {
+      if (item.id === id) {
+        this.value = item
+        this.algo = id
+      }
+    })
+
+    this.editOk = !this.editOk
   }
 
   search(e: Event): void { //função de busca na lista
@@ -76,7 +89,7 @@ export class ListReferenciasComponent {
     const target = e.target as HTMLInputElement
 
     const value = target.value.toLowerCase()
-    
+
     this.referencias = this.Allreferencias.filter((m) =>
       m.author.toLowerCase().includes(value) ||
       m.title.toLocaleLowerCase().includes(value) ||

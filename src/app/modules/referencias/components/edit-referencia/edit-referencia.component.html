@@ -1,2 +1,78 @@
-<p>edit-referencia works!</p>
-<a routerLink="/referencias"> voltar</a>
+<section class="container-cad-referencia">
+    <section class="nav-cad-referencia">
+        <h1>Editar Referencia</h1>
+        <a [style]="{fontSize:'25pt', cursor: 'pointer'}" (click)="trade()"> &times; </a>
+    </section>
+
+    <hr />
+
+    <mat-card class="cad-form" [formGroup]="form">
+        <mat-form-field appearance="outline">
+            <mat-label>Autor</mat-label>
+            <input autocomplete="off" formControlName="author" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Título</mat-label>
+            <input autocomplete="off" formControlName="title" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Subtítulo</mat-label>
+            <input autocomplete="off" formControlName="subtitle" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Local de Publicação</mat-label>
+            <input autocomplete="off" formControlName="publication" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Editora</mat-label>
+            <input autocomplete="off" formControlName="publisher" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Ano de Publicação</mat-label>
+            <input autocomplete="off" formControlName="Year" matInput #input maxlength="50" placeholder="Digite a Palavra" type="number"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>N° da Edição </mat-label>
+            <input autocomplete="off" formControlName="numEdition" matInput #input maxlength="50" placeholder="Digite a Palavra" type="number"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Volume</mat-label>
+            <input autocomplete="off" formControlName="Vol" matInput #input maxlength="50" placeholder="Digite a Palavra" type="number"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Página</mat-label>
+            <input autocomplete="off" formControlName="Pag" matInput #input maxlength="50" placeholder="Digite a Palavra" type="number"/>
+        </mat-form-field>
+
+        <input type="hidden" formControlName="created_at" />
+        <input type="hidden" formControlName="id" />
+        <input type="hidden" formControlName="updated_at" />
+    </mat-card>
+
+    <hr />
+
+    <section class="cad-button-form">
+        <button mat-raised-button class="button-cad-material" [style]="{border:'1px solid #dc3545', color: '#dc3545'}"
+            (click)="trade()">
+            Cancelar
+        </button>
+        <button mat-raised-button class="button-cad-material" [style]="{border:'1px solid #dc3545', color: '#dc3545'}"
+            (click)="delete()">
+            Apagar
+        </button>
+        <button mat-raised-button class="button-cad-material" [style]="{border:'1px solid #28a745', color: '#28a745'}"
+            (click)="onSubmit()">
+            Confirmar
+        </button>
+
+    </section>
+
+</section>

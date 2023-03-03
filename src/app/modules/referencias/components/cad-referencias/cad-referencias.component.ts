@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Referencia } from 'src/app/model/Referencia.model';
 import { ReferenciasService } from 'src/app/services/referencias/referencias.service';
@@ -10,6 +10,7 @@ import { ReferenciasService } from 'src/app/services/referencias/referencias.ser
 })
 export class CadReferenciasComponent {
   @Output() CadOk: EventEmitter<any> = new EventEmitter()
+  @Input() size!: number
 
   public form!: FormGroup;
 
@@ -34,7 +35,10 @@ export class CadReferenciasComponent {
       created_at: [''],
       updated_at: [''],
     })
+  }
 
+  ngOnInit(){
+    console.log(this.size)
   }
 
   onSubmit() {
@@ -50,7 +54,7 @@ export class CadReferenciasComponent {
     const title = this.form.controls["title"].value
     const created_at = this.date()
 
-    this.referencia = new Referencia(4, author, title, subtitle, numEdit, publisher, created_at, "--", publication, Pag, Vol, Year)
+    this.referencia = new Referencia(this.size, author, title, subtitle, parseInt(numEdit), publisher, created_at, "--", publication, parseInt(Pag), parseInt(Vol), parseInt(Year))
   
     console.log(this.referencia)
 
