@@ -37,10 +37,6 @@ export class CadReferenciasComponent {
     })
   }
 
-  ngOnInit(){
-    console.log(this.size)
-  }
-
   onSubmit() {
 
     const author = this.form.controls["author"].value
@@ -56,16 +52,12 @@ export class CadReferenciasComponent {
 
     this.referencia = new Referencia(this.size, author, title, subtitle, parseInt(numEdit), publisher, created_at, "--", publication, parseInt(Pag), parseInt(Vol), parseInt(Year))
   
-    console.log(this.referencia)
-
     this.save()
   }
   
   save(){
     this.service.cadRef(this.referencia).subscribe((res) => {
       window.location.reload()
-    }, err => {
-      console.log(err);
     })
   }
 
