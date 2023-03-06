@@ -11,7 +11,7 @@
             <button (click)="cad()">+ Nova palavra</button>
             <mat-form-field appearance="outline">
                 <mat-label>Buscar Palavra</mat-label>
-                <input matInput #input maxlength="10" placeholder="Ex: Onomatopeia" (input)="search($event)" />
+                <input matInput #input maxlength="10" placeholder="Ex: Onomatopeia" (input)="search($event)" autocomplete="off" />
             </mat-form-field>
         </section>
     </div>
