@@ -5,13 +5,13 @@
         <section class="switch-title">
             <a class="material-icons" routerLink=""> arrow_back </a>
             <h1>Referências</h1>
-            <a class="material-icons" routerLink="/referencias"> arrow_forward </a>
+            <a class="material-icons" routerLink="/glossario"> arrow_forward </a>
         </section>
         <section class="search-item">
             <button (click)="cad()">+ Nova referencia</button>
             <mat-form-field appearance="outline">
                 <mat-label>Buscar Referencia</mat-label>
-                <input matInput #input maxlength="10" placeholder="Ex: Onomatopeia" (input)="search($event)" />
+                <input matInput #input maxlength="10" placeholder="Autor/Título/Subtítulo" (input)="search($event)" autocomplete="off"/>
             </mat-form-field>
         </section>
     </div>
@@ -62,7 +62,7 @@
                 </tr>
             </tbody>
         </table>
-        
+
         <div [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}"
             *ngIf="editOk">
             <app-edit-referencia (EditOk)="edit()" [info]="value" [ID]="algo" *ngIf="editOk"></app-edit-referencia>
