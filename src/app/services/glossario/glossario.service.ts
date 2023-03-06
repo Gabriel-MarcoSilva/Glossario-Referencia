@@ -25,7 +25,6 @@ export class GlossarioService {
   //cadastro de novo glossario (ok)
 
   setGlossario(data: any): Observable<Glossario> {
-    console.log("data", data)
     return this.http.post<Glossario>(`${this.baseUrl}/cad-glossario`, data)
   }
 

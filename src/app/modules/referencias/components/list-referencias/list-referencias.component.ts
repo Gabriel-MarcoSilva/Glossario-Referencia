@@ -43,7 +43,7 @@ export class ListReferenciasComponent {
         }
       })
 
-      this.size = parseInt(dado.toString()) + 1
+      this.size = dado != undefined ? parseInt(dado.toString()) + 1 : 0
 
       this.referencias = data
       this.Allreferencias = data
@@ -95,6 +95,18 @@ export class ListReferenciasComponent {
       m.title.toLocaleLowerCase().includes(value) ||
       m.subtitle.toLocaleLowerCase().includes(value)
     )
+  }
+
+  delete(id: Number) {
+    const conf = confirm("Deseja apagar referência?")
+
+    if(conf){
+      this.service.deleteRef(id).subscribe((res) => {
+        window.location.reload()
+      })
+    }
+
+    return
   }
 
 }

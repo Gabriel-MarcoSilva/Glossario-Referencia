@@ -15,11 +15,7 @@
             </mat-form-field>
         </section>
     </div>
-    <div class="header-list">
-        <h1> # </h1>
-        <h1> Palavra-chave</h1>
-        <h1> Descrição </h1>
-    </div>
+   
     <section class="block-cad" *ngIf="cadOk">
         <div
             [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}">
@@ -27,17 +23,46 @@
         </div>
     </section>
     <div class="content-list">
+        <table class="table table-hover " >
+            <thead >
+                <tr>
+                    <th scope="col">#</th>
+                    <!-- <th scope="col"></th> -->
+                    <th scope="col">Autor</th>
+                    <th scope="col" class="title">Título</th>
+                    <th class="icon" scope="col">Alterar</th>
+                    <th class="icon" scope="col">Remover</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of referencias; index as i">
 
-        <section *ngFor="let item of referencias">
-            <div *ngIf="item.id < quantidade && item.id >= inicio">
-                <a class="item-list">
-                    <p> {{item.id}}</p>
-                    <p class="list-p-keyWord"> {{item.author}} </p>
-                    <p class="list-p-description"> {{item.title}} </p>
-                    <a (click)="Edit(item.id)" class="list-a-edit">Editar</a>
-                </a>
-            </div>
-        </section>
+                <tr class="toShow" *ngIf="item.id < quantidade && item.id >= inicio">
+                    <td class="icon">
+                        {{item.id}}
+                    </td>
+
+                    <td scope="row" style="width: 170px;">{{item.author}}</td>
+                    <td scope="row" style="width: 170px;">{{item.title}}</td>
+
+                    <td class="icon" scope="row">
+                        <a (click)="Edit(item.id)">
+                            <span class="material-icons" style="color: #6E867D; cursor: pointer;">
+                                edit
+                            </span>
+                        </a>
+                    </td>
+
+                    <td class="icon" scope="row">
+                        <a (click)="delete(item.id)">
+                            <span class="material-icons" style="color: #e91f30; cursor: pointer;">
+                                delete
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
         <div [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}"
             *ngIf="editOk">
             <app-edit-referencia (EditOk)="edit()" [info]="value" [ID]="algo" *ngIf="editOk"></app-edit-referencia>

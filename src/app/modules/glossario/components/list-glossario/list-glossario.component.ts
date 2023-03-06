@@ -64,7 +64,7 @@ export class ListGlossarioComponent {
         }
       })
 
-      this.size = parseInt(dado.toString()) + 1
+      this.size = dado != undefined ? parseInt(dado.toString()) + 1: 0
 
       this.it = data
       this.itens = data;
@@ -106,5 +106,17 @@ export class ListGlossarioComponent {
     this.it = this.itens.filter((m) =>
       m.keyWord.toLowerCase().includes(value)
     )
+  }
+
+  delete(id: Number) {
+    const conf = confirm("Deseja apagar palavra?")
+
+    if(conf){
+      this.service.deleteGlossario(id).subscribe((res) => {
+        window.location.reload()
+      })
+    }
+
+    return
   }
 }

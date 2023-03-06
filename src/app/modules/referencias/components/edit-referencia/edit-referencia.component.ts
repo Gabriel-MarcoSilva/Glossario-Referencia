@@ -52,12 +52,6 @@ export class EditReferenciaComponent {
     })
   }
 
-  delete() {
-    this.service.deleteRef(this.info.id).subscribe((res) => {
-      window.location.reload()
-    })
-  }
-
   date() {
     const data = new Date();
 
