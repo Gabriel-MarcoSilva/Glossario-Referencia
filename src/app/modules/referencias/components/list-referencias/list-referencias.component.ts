@@ -70,9 +70,8 @@ export class ListReferenciasComponent {
     return key
   }
 
-
   next() {
-    if (this.nextId > this.quantidade) {
+    if (this.insertIds.length >= this.quantidade) {
       this.quantidade += 10
       this.inicio += 10
     }

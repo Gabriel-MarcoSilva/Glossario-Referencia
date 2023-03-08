@@ -33,7 +33,7 @@ export class ListGlossarioComponent {
   }
 
   next() {
-    if (this.nextId > this.quantidade) {
+    if (this.insertIds.length >= this.quantidade) {
       this.quantidade += 10
       this.inicio += 10
     }
@@ -75,6 +75,7 @@ export class ListGlossarioComponent {
       this.itens = data;
 
       this.nextId = dado != undefined ? parseInt(this.linearSearch(dado).toString()) : 0
+      console.log(this.insertIds.length)
 
     })
   }
