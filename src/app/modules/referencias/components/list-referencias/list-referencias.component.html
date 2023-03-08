@@ -3,40 +3,72 @@
 <section class="container-list">
     <div class="nav-list">
         <section class="switch-title">
-            <a class="container-list-img" routerLink=""> <img src={{imageBack}} /> </a>
+            <a class="material-icons" routerLink=""> arrow_back </a>
             <h1>Referências</h1>
-            <a class="container-list-img" routerLink="/glossario"> <img src={{imageNext}} /> </a>
+            <a class="material-icons" routerLink="/glossario"> arrow_forward </a>
         </section>
         <section class="search-item">
             <button (click)="cad()">+ Nova referencia</button>
             <mat-form-field appearance="outline">
-                <mat-label>Buscar Referência</mat-label>
-                <input matInput #input maxlength="10" placeholder="Ex: Onomatopeia" />
+                <mat-label>Buscar Referencia</mat-label>
+                <input matInput #input maxlength="10" placeholder="Autor/Título/Subtítulo" (input)="search($event)"
+                    autocomplete="off" />
             </mat-form-field>
         </section>
     </div>
-    <div class="header-list">
-        <h1> # </h1>
-        <h1> Palavra-chave</h1>
-        <h1> Descrição </h1>
-    </div>
-    <section class="block-cad" >
+
+    <section class="block-cad" *ngIf="cadOk">
         <div
             [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}">
-            <app-cad-referencias (CadOk)="cad()"></app-cad-referencias>
+            <app-cad-referencias (CadOk)="cad()" [size]="nextId"></app-cad-referencias>
         </div>
     </section>
+    <table class="table table-hover ">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <!-- <th scope="col"></th> -->
+                <th scope="col">Autor</th>
+                <th scope="col" class="title">Título</th>
+                <th class="icon" scope="col">Alterar</th>
+                <th class="icon" scope="col">Remover</th>
+            </tr>
+        </thead>
+    </table>
     <div class="content-list">
-        <a class="item-list" routerLink="edit/0">
-            <p> 0 </p>
-            <p> Onomatopeia </p>
-            <p> sdklajdlskdjas,nme,mn kj ljlkj lkjslkj lkjlkj h jkbkjnk nlkml mlnk bhkbhjv </p>
-        </a>
-        <a class="item-list" routerLink="edit/0">
-            <p> 0 </p>
-            <p> Onomatopeia </p>
-            <p> sdklajdlskdjas,nme,mn kj ljlkj lkjslkj lkjlkj h jkbkjnk nlkml mlnk bhkbhjv </p>
-        </a>
+        <table class="table table-hover ">
+
+            <tbody *ngFor="let item of referencias; index as i">
+
+                <tr class="toShow" *ngIf="i < quantidade && i >= inicio">
+                    <td class="icon">
+                        {{i}}
+                    </td>
+
+                    <td scope="row" style="width: 170px;">{{item.author}}</td>
+                    <td scope="row" style="width: 170px;" class="title">{{item.title}}</td>
+
+                    <td class="icon" scope="row" style="display: flex; justify-content: space-evenly;">
+                        <a (click)="Edit(item.id)">
+                            <span class="material-icons" style="color: #6E867D; cursor: pointer;">
+                                edit
+                            </span>
+                        </a>
+                        <a (click)="delete(item.id)">
+                            <span class="material-icons" style="color: #e91f30; cursor: pointer;">
+                                delete
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}"
+            *ngIf="editOk">
+            <app-edit-referencia (EditOk)="edit()" [info]="value" [ID]="algo" *ngIf="editOk"></app-edit-referencia>
+        </div>
+
     </div>
     <div class="button-list">
         <button (click)="back()" class="material-icons"> arrow_back </button>

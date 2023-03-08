@@ -9,51 +9,51 @@
     <mat-card class="cad-form" [formGroup]="form">
         <mat-form-field appearance="outline">
             <mat-label>Autor</mat-label>
-            <input formControlName="author" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
+            <input autocomplete="off" formControlName="author" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Título</mat-label>
-            <input formControlName="title" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
+            <input autocomplete="off" formControlName="title" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Subtítulo</mat-label>
-            <input formControlName="subtitle" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
+            <input autocomplete="off" formControlName="subtitle" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
         </mat-form-field>
         
         <mat-form-field appearance="outline">
             <mat-label>Local de Publicação</mat-label>
-            <input formControlName="publication" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
+            <input autocomplete="off" formControlName="publication" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Editora</mat-label>
-            <input formControlName="publisher" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
+            <input autocomplete="off" formControlName="publisher" matInput #input maxlength="50" placeholder="Digite a Palavra" required />
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Ano de Publicação</mat-label>
-            <input formControlName="Year" matInput #input maxlength="50" placeholder="Digite a Palavra"/>
+            <input autocomplete="off" formControlName="Year" type="number" matInput #input maxlength="50" placeholder="Digite a Palavra"/>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>N° da Edição </mat-label>
-            <input formControlName="numEdit" matInput #input maxlength="50" placeholder="Digite a Palavra"/>
+            <input autocomplete="off" formControlName="numEdit" type="number" matInput #input maxlength="50" placeholder="Digite a Palavra"/>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Volume</mat-label>
-            <input formControlName="Vol" matInput #input maxlength="50" placeholder="Digite a Palavra"/>
+            <input autocomplete="off" formControlName="Vol" type="number" matInput #input maxlength="50" placeholder="Digite a Palavra"/>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Página</mat-label>
-            <input formControlName="Pag" matInput #input maxlength="50" placeholder="Digite a Palavra"/>
+            <input autocomplete="off" formControlName="Pag" type="number" matInput #input maxlength="50" placeholder="Digite a Palavra"/>
         </mat-form-field>
 
-        <input type="hidden" formContrlName="created_at" />
-        <input type="hidden" formContrlName="updated_at" />
+        <input autocomplete="off" type="hidden" formContrlName="created_at" />
+        <input autocomplete="off" type="hidden" formContrlName="updated_at" />
     </mat-card>
 
     <hr />

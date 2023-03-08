@@ -42,8 +42,6 @@ export class CadGlossarioComponent {
   save() { // ainda ta dando erro
     this.service.setGlossario(this.glossario).subscribe((res) => {
       window.location.reload()
-    }, err => {
-      console.log(err);
     })
   }
 

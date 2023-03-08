@@ -49,3 +49,34 @@ hr{
     border: 1px solid #cfcfcfb7;
 
 }
+
+.cancell, .confirm {
+    background-color: transparent;
+    border-radius: 0.25em;
+    padding: 0.25em 0.75em;
+    font-size: 12pt;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cancell{
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    box-shadow: 0 0 7px #dc354549;
+}
+
+.confirm{
+    border: 1px solid #28a745;
+    color: #28a745;
+    box-shadow: 0 0 7px #28a74549;
+}
+
+.cancell:hover {
+    color: #fff;
+    background-color: #dc3545;
+}
+
+.confirm:hover {
+    color: #fff;
+    background-color: #28a745;
+}
