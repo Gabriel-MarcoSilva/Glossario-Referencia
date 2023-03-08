@@ -39,24 +39,14 @@ export class EditGlossarioComponent {
 
   async onSubmit() {
 
-    const formData = new FormData()
-
-    formData.append('keyWord', this.form.value.keyWord)
-    formData.append('description', this.form.value.description)
-    formData.append('created_at', this.form.value.created_at)
-    formData.append('updated_at', this.form.value.updated_at)
-
     const id = parseInt(this.ID.toString())
 
     await this.service.editGlossario(id!, this.form.value).subscribe(res => {
       window.location.reload()
     })
-  }
 
-  delete() {
-    this.service.deleteGlossario(this.info.id).subscribe((res) => {
-      window.location.reload()
-    })
+    alert(this.form.value.keyWord + " atualizado com sucesso")
+
   }
 
   date() {

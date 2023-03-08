@@ -11,20 +11,21 @@
             <button (click)="cad()">+ Nova referencia</button>
             <mat-form-field appearance="outline">
                 <mat-label>Buscar Referencia</mat-label>
-                <input matInput #input maxlength="10" placeholder="Autor/Título/Subtítulo" (input)="search($event)" autocomplete="off"/>
+                <input matInput #input maxlength="10" placeholder="Autor/Título/Subtítulo" (input)="search($event)"
+                    autocomplete="off" />
             </mat-form-field>
         </section>
     </div>
-   
+
     <section class="block-cad" *ngIf="cadOk">
         <div
             [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}">
-            <app-cad-referencias (CadOk)="cad()" [size]="size"></app-cad-referencias>
+            <app-cad-referencias (CadOk)="cad()" [size]="nextId"></app-cad-referencias>
         </div>
     </section>
     <div class="content-list">
-        <table class="table table-hover " >
-            <thead >
+        <table class="table table-hover ">
+            <thead>
                 <tr>
                     <th scope="col">#</th>
                     <!-- <th scope="col"></th> -->
@@ -38,7 +39,7 @@
 
                 <tr class="toShow" *ngIf="item.id < quantidade && item.id >= inicio">
                     <td class="icon">
-                        {{item.id}}
+                        {{i}}
                     </td>
 
                     <td scope="row" style="width: 170px;">{{item.author}}</td>

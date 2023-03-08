@@ -17,11 +17,13 @@ export class ListGlossarioComponent {
   public value!: Glossario
 
   public algo!: Number
-  public size!: number
+  public nextId!: number
 
   quantidade = 10; inicio = 0;
 
   searchTerm: String = ""
+
+  public insertIds: Number[] = []
 
   constructor(
     private router: Router,
@@ -31,7 +33,7 @@ export class ListGlossarioComponent {
   }
 
   next() {
-    if (this.size > this.quantidade) {
+    if (this.nextId > this.quantidade) {
       this.quantidade += 10
       this.inicio += 10
     }
@@ -58,17 +60,35 @@ export class ListGlossarioComponent {
       const i = data.length
       let dado!: Number
 
-      data.map((j) => {
+      data.map((item) => {
         for (let k = i; k > i - 1; k--) {
-          dado = j.id
+
+          dado = item.id
+
+          if (item.id || item.id === 0) {
+            this.insertIds.push(item.id)
+          }
         }
       })
 
-      this.size = dado != undefined ? parseInt(dado.toString()) + 1: 0
-
-      this.it = data
+      this.it = data;
       this.itens = data;
+
+      this.nextId = dado != undefined ? parseInt(this.linearSearch(dado).toString()) : 0
+
     })
+  }
+
+  linearSearch(key: Number) {
+
+    for (let i = 0; i < this.insertIds.length; i++) {
+      if (this.insertIds[i] === key) {
+        key = (parseInt(key.toString()) + 1)
+        this.linearSearch(key)
+      }
+    }
+
+    return key
   }
 
   Expandir(id: Number) { //mostra a descrição de forma dinâmica
@@ -111,7 +131,7 @@ export class ListGlossarioComponent {
   delete(id: Number) {
     const conf = confirm("Deseja apagar palavra?")
 
-    if(conf){
+    if (conf) {
       this.service.deleteGlossario(id).subscribe((res) => {
         window.location.reload()
       })
