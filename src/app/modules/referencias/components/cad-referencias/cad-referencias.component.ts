@@ -10,6 +10,7 @@ import { ReferenciasService } from 'src/app/services/referencias/referencias.ser
 })
 export class CadReferenciasComponent {
   @Output() CadOk: EventEmitter<any> = new EventEmitter()
+  @Output() ld: EventEmitter<any> = new EventEmitter()
   @Input() size!: number
 
   public form!: FormGroup;
@@ -37,7 +38,7 @@ export class CadReferenciasComponent {
     })
   }
 
-  onSubmit() {
+  async onSubmit() {
 
     const author = this.form.controls["author"].value
     const publisher = this.form.controls["publisher"].value
@@ -50,7 +51,7 @@ export class CadReferenciasComponent {
     const title = this.form.controls["title"].value
     const created_at = this.date()
     
-    this.referencia = new Referencia(this.size, author, title, subtitle, parseInt(numEdit), publisher, created_at, "--", publication, parseInt(Pag), parseInt(Vol), parseInt(Year))
+    this.referencia = new Referencia(await this.size, author, title, subtitle, parseInt(numEdit), publisher, created_at, "--", publication, parseInt(Pag), parseInt(Vol), parseInt(Year))
 
     this.save()
   }
@@ -58,7 +59,7 @@ export class CadReferenciasComponent {
   save() {
     this.service.cadRef(this.referencia).subscribe((res) => {
       window.location.reload()
-    })
+    }, err => this.ld.emit())
   }
 
   trade() {

@@ -59,11 +59,11 @@ export class ListReferenciasComponent {
   }
 
   linearSearch(key: Number) {
+    let valu: Number
 
     for (let i = 0; i < this.insertIds.length; i++) {
       if (this.insertIds[i] === key) {
-        key = (parseInt(key.toString()) + 1)
-        this.linearSearch(key)
+        key = this.linearSearch((parseInt(key.toString()) + 1))
       }
     }
 
@@ -71,7 +71,7 @@ export class ListReferenciasComponent {
   }
 
   next() {
-    if (this.insertIds.length >= this.quantidade) {
+    if (this.insertIds.length > this.quantidade) {
       this.quantidade += 10
       this.inicio += 10
     }

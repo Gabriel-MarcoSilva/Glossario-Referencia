@@ -11,6 +11,8 @@ import { GlossarioService } from 'src/app/services/glossario/glossario.service';
 export class CadGlossarioComponent {
 
   @Output() CadOk: EventEmitter<any> = new EventEmitter()
+  @Output() ld: EventEmitter<any> = new EventEmitter()
+
   @Input() size!: number
 
   public form!: FormGroup
@@ -28,21 +30,21 @@ export class CadGlossarioComponent {
     })
   }
 
-  onSubmit() {
+  async onSubmit() {
 
     const keyWord = this.form.controls["keyWord"].value
     const description = this.form.controls["description"].value
     const created_at = this.date()
 
-    this.glossario = (new Glossario(this.size  , keyWord, description, created_at, "--"))
+    this.glossario = (new Glossario(await this.size  , keyWord, description, created_at, "--"))
 
     this.save()
   }
 
-  save() { // ainda ta dando erro
+  save() { 
     this.service.setGlossario(this.glossario).subscribe((res) => {
       window.location.reload()
-    })
+    }, err => this.ld.emit())
   }
 
   date() {

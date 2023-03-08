@@ -19,7 +19,7 @@
     <section class="block-cad" *ngIf="cadOk">
         <div
             [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}">
-            <app-cad-glossario (CadOk)="cad()" [size]="nextId"></app-cad-glossario>
+            <app-cad-glossario (CadOk)="cad()" [size]="nextId" (ld)="load()"></app-cad-glossario>
         </div>
     </section>
     <table class="table table-hover ">

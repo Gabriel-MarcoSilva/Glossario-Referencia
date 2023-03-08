@@ -20,7 +20,7 @@
     <section class="block-cad" *ngIf="cadOk">
         <div
             [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}">
-            <app-cad-referencias (CadOk)="cad()" [size]="nextId"></app-cad-referencias>
+            <app-cad-referencias (CadOk)="cad()" [size]="nextId" (ld)="load()"></app-cad-referencias>
         </div>
     </section>
     <table class="table table-hover ">
@@ -42,7 +42,7 @@
 
                 <tr class="toShow" *ngIf="i < quantidade && i >= inicio">
                     <td class="icon">
-                        {{i}}
+                        {{i + 1}}
                     </td>
 
                     <td scope="row" style="width: 170px;">{{item.author}}</td>

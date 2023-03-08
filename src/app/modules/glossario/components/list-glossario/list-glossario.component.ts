@@ -33,7 +33,7 @@ export class ListGlossarioComponent {
   }
 
   next() {
-    if (this.insertIds.length >= this.quantidade) {
+    if (this.insertIds.length > this.quantidade) {
       this.quantidade += 10
       this.inicio += 10
     }
@@ -75,17 +75,16 @@ export class ListGlossarioComponent {
       this.itens = data;
 
       this.nextId = dado != undefined ? parseInt(this.linearSearch(dado).toString()) : 0
-      console.log(this.insertIds.length)
+
+      console.log(this.nextId)
 
     })
   }
 
   linearSearch(key: Number) {
-
     for (let i = 0; i < this.insertIds.length; i++) {
       if (this.insertIds[i] === key) {
-        key = (parseInt(key.toString()) + 1)
-        this.linearSearch(key)
+        key = this.linearSearch((parseInt(key.toString()) + 1))
       }
     }
 
