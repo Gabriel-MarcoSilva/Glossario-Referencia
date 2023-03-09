@@ -43,7 +43,7 @@
                 <tr class="toShow" *ngIf="i < quantidade && i >= inicio">
                     <td class="icon">{{i+1}}</td>
                     <td scope="row" style="width: 170px;">{{item.keyWord}}</td>
-                    <td scope="row" style="width: 170px;" class="title">{{item.description}}</td>
+                    <td scope="row" style="width: 170px;" class="title " (click)="Expandir(i)" ><p class="itemDescription">{{item.description}}</p></td>
 
                     <td class="icon" scope="row" style="display: flex; justify-content: space-evenly;">
                         <a (click)="Edit(item.id)">

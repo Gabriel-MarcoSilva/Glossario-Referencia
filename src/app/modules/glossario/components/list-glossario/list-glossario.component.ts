@@ -93,12 +93,12 @@ export class ListGlossarioComponent {
 
   Expandir(id: Number) { //mostra a descrição de forma dinâmica
     const ID = parseInt(id.toString()) - this.inicio
-    const item = document.querySelectorAll(".item-list")[ID] as HTMLElement
+    const item = document.querySelectorAll(".itemDescription")[ID] as HTMLElement
 
-    if (item.style.maxHeight == "5vh" || item.style.maxHeight == "") {
-      item.style.maxHeight = "10vh"
+    if (item.style.whiteSpace == "nowrap" || item.style.whiteSpace == "") {
+      item.style.whiteSpace = "break-spaces"
     } else {
-      item.style.maxHeight = "5vh"
+      item.style.whiteSpace = "nowrap"
     }
 
   }

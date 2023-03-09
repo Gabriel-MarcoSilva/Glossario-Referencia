@@ -129,4 +129,16 @@ export class ListReferenciasComponent {
     return
   }
 
+  Expandir(id: Number) { //mostra a descrição de forma dinâmica
+    const ID = parseInt(id.toString()) - this.inicio
+    const item = document.querySelectorAll(".itemDescription")[ID] as HTMLElement
+
+    if (item.style.whiteSpace == "nowrap" || item.style.whiteSpace == "") {
+      item.style.whiteSpace = "break-spaces"
+    } else {
+      item.style.whiteSpace = "nowrap"
+    }
+
+  }
+
 }

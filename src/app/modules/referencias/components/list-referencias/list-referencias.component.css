@@ -28,6 +28,21 @@ thead {
 
 }
 
+
 .title {
     min-width: 25em;
+    max-width: 3vh;
+    transition: 0.2s;
+}
+
+.title p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: justify;
+    cursor: pointer;
+    transition: 0.2s;
+    max-height: 10vh;
+    overflow-y: auto;
+    padding: 3px;
 }

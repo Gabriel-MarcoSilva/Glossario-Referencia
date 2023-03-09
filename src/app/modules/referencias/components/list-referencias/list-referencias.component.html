@@ -46,7 +46,7 @@
                     </td>
 
                     <td scope="row" style="width: 170px;">{{item.author}}</td>
-                    <td scope="row" style="width: 170px;" class="title">{{item.title}}</td>
+                    <td scope="row" style="width: 170px;" class="title" (click)="Expandir(i)"><p class="itemDescription">{{item.title}}</p></td>
 
                     <td class="icon" scope="row" style="display: flex; justify-content: space-evenly;">
                         <a (click)="Edit(item.id)">
