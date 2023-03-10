@@ -29,7 +29,7 @@
                 <th scope="col">#</th>
                 <!-- <th scope="col"></th> -->
                 <th scope="col">Autor</th>
-                <th scope="col" class="title">Título</th>
+                <th scope="col" class="title">Referência</th>
                 <th class="icon" scope="col">Alterar</th>
                 <th class="icon" scope="col">Remover</th>
             </tr>
@@ -45,8 +45,32 @@
                         {{i + 1}}
                     </td>
 
-                    <td scope="row" style="width: 170px;">{{item.author}}</td>
-                    <td scope="row" style="width: 170px;" class="title" (click)="Expandir(i)"><p class="itemDescription">{{item.title}}</p></td>
+                    <td scope="row" style="width: 170px;" *ngIf="item.author.length < 4; else etAll">{{item.author}}
+                    </td>
+                    <ng-template #etAll>
+                        <td scope="row" style="width: 170px;">{{item.author[0]}}
+                            <span style="font-style: italic;"> et al </span>
+                        </td>
+
+                    </ng-template>
+                    <td scope="row" style="width: 170px;" class="title" (click)="Expandir(i)">
+                        <p class="itemDescription">
+                            <span style="text-transform: uppercase; "
+                                *ngIf="item.author.length < 4; else etAll2">{{item.author}} </span>
+                            <ng-template #etAll2>
+                                <span style="text-transform: uppercase; ">{{item.author[0]}} <span
+                                        style="font-style: italic; text-transform: lowercase;">et al </span></span>
+                            </ng-template>
+                            <span style="font-weight: 'bold';">{{item.title}}</span>
+                            <span *ngIf="item.subtitle">: {{item.subtitle}}. </span>
+                            <span *ngIf="item.numEdition">{{item.numEdition}} ed.</span>
+                            <span *ngIf="item.Vol"> Vol {{item.Vol}}.</span>
+                            <span *ngIf="item.Pag"> pág {{item.Pag}}.</span>
+                            <span *ngIf="item.publication"> {{item.publication}}.</span>
+                            <span *ngIf="item.publisher"> {{item.publisher}}.</span>
+                            <span *ngIf="item.Year"> {{item.Year}}.</span>
+                        </p>
+                    </td>
 
                     <td class="icon" scope="row" style="display: flex; justify-content: space-evenly;">
                         <a (click)="Edit(item.id)">

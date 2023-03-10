@@ -15,23 +15,24 @@ export class ReferenciasService {
     private http: HttpClient
   ) { }
 
-
-  getRef(): Observable<Referencia[]>{
+  //listagem de referencias (ok)
+  getRef(): Observable<Referencia[]> {
     return this.http.get<Referencia[]>(`${this.baseUrl}/referencias`)
   }
-
-  cadRef(data: any): Observable<Referencia>{
+  //cadastro de referencias (ok)
+  cadRef(data: any): Observable<Referencia> {
     return this.http.post<Referencia>(`${this.baseUrl}/cad-referencias`, data)
   }
-
+  //remoção de referencias (ok)
+  deleteRef(id: Number) {
+    const url = `${this.baseUrl}/delet-referencia/${id}`
+    return this.http.delete(url)
+  }
+  //edição de referencia (ok)
   editRef(id: Number, data: FormGroup): Observable<FormGroup> {
     const url = `${this.baseUrl}/edit-referencia/${id}`
     return this.http.put<FormGroup>(url, data)
   }
 
-  deleteRef(id: Number) {
-    const url = `${this.baseUrl}/delet-referencia/${id}`
-    return this.http.delete(url)
-  }
 
 }

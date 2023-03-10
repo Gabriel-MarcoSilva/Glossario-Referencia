@@ -10,10 +10,12 @@ import { GlossarioService } from 'src/app/services/glossario/glossario.service';
 })
 export class CadGlossarioComponent {
 
-  @Output() CadOk: EventEmitter<any> = new EventEmitter()
+  @Output() CadOk: EventEmitter<any> = new EventEmitter() //relacionmento filha-mae (a filha emite um evento para a mãe)
   @Output() ld: EventEmitter<any> = new EventEmitter()
 
-  @Input() size!: number
+  @Input() size!: number //relacionamento mãe-filha (a mãe envia um dado para a filha)
+
+  //declaração de variáveis
 
   public form!: FormGroup
   public glossario!: Glossario
@@ -22,7 +24,7 @@ export class CadGlossarioComponent {
     private fb: FormBuilder,
     private service: GlossarioService
   ) {
-    this.form = this.fb.group({
+    this.form = this.fb.group({ //validação de formulário
       keyWord: ['', Validators.required],
       description: ['', Validators.required],
       created_at: [''],
@@ -30,24 +32,25 @@ export class CadGlossarioComponent {
     })
   }
 
-  async onSubmit() {
+  async onSubmit() { //função que atribui valores para serem adicionados
 
     const keyWord = this.form.controls["keyWord"].value
     const description = this.form.controls["description"].value
     const created_at = this.date()
 
+    //usa o modelo de referencia para gerar uma nova
     this.glossario = (new Glossario(await this.size  , keyWord, description, created_at, "--"))
 
-    this.save()
+    this.save() //chama a função 
   }
 
-  save() { 
+  save() { // cadastra no banco de dados e reinicia a página
     this.service.setGlossario(this.glossario).subscribe((res) => {
       window.location.reload()
-    }, err => this.ld.emit())
+    }, err => this.ld.emit()) //caso dê erro ele emite o evento que dá reload na chamada do banco em lad() de list-glossario
   }
 
-  date() {
+  date() { // gera a data do cadastro
     const data = new Date();
 
     const DD = String(data.getDate()).padStart(2, "0") //pega o dia
@@ -59,7 +62,7 @@ export class CadGlossarioComponent {
     return date
   }
 
-  trade() {
+  trade() { //emite p evento de visualização do compoennte
     this.CadOk.emit()
   }
 }

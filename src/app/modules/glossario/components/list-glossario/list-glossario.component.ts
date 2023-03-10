@@ -10,6 +10,8 @@ import { GlossarioService } from 'src/app/services/glossario/glossario.service';
 })
 export class ListGlossarioComponent {
 
+  //declaração de variáveis e constantes
+
   public cadOk: Boolean = false
   public editOk: Boolean = false
   public itens!: Glossario[]
@@ -32,29 +34,29 @@ export class ListGlossarioComponent {
     this.load()
   }
 
-  next() {
+  next() { //avança 10 unidades na listagem
     if (this.insertIds.length > this.quantidade) {
       this.quantidade += 10
       this.inicio += 10
     }
   }
 
-  back() {
+  back() { //retorna 10 unidades na listagem
     if (this.inicio != 0) {
       this.quantidade -= 10
       this.inicio -= 10
     }
   }
 
-  cad() {
+  cad() { // deixa visível ou não o componente cad-glossario
     this.cadOk = !this.cadOk
   }
 
-  edit() {
+  edit() { //deixa visível ou não o compoente edit-glossario
     this.editOk = !this.editOk
   }
 
-  load() {
+  load() { //carrega os dados do banco
     this.service.getGlossario().subscribe(data => {
 
       const i = data.length
@@ -63,32 +65,30 @@ export class ListGlossarioComponent {
       data.map((item) => {
         for (let k = i; k > i - 1; k--) {
 
-          dado = item.id
+          dado = item.id //pega o ultimo id
 
-          if (item.id || item.id === 0) {
+          if (item.id || item.id === 0) { //adiciona ao array os ids do banco
             this.insertIds.push(item.id)
           }
         }
       })
 
-      this.it = data;
-      this.itens = data;
+      this.it = data; //atribui valores da listagem para os arrays
+      this.itens = data; // array que é usado como base para o outro pesquisar
 
-      this.nextId = dado != undefined ? parseInt(this.linearSearch(dado).toString()) : 0
-
-      console.log(this.nextId)
+      this.nextId = dado != undefined ? parseInt(this.linearSearch(dado).toString()) : 0 //chama a função que gera o id para o poximo item a ser cadastrado, caso dado seja diferente de indefinido, se for ele recebe o id = 0, funciona somente para o primeiro dado
 
     })
   }
 
-  linearSearch(key: Number) {
+  linearSearch(key: Number) { //função recursiva que busca no array de ids se já existe o id cadsatrado
     for (let i = 0; i < this.insertIds.length; i++) {
-      if (this.insertIds[i] === key) {
+      if (this.insertIds[i] === key) { //se ja existir o id a função chama ela mesma com o valor com acrescimo
         key = this.linearSearch((parseInt(key.toString()) + 1))
       }
     }
 
-    return key
+    return key //caso o id n exista na lista de ids é retornado esse id
   }
 
   Expandir(id: Number) { //mostra a descrição de forma dinâmica
@@ -128,7 +128,7 @@ export class ListGlossarioComponent {
     )
   }
 
-  delete(id: Number) {
+  delete(id: Number) {// função delete que apaga um glossario e reinicia a página
     const conf = confirm("Deseja apagar palavra?")
 
     if (conf) {

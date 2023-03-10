@@ -10,10 +10,12 @@ import { GlossarioService } from 'src/app/services/glossario/glossario.service';
 })
 export class EditGlossarioComponent {
 
-  @Input() info!: Glossario
+  @Input() info!: Glossario //relacionamento mae-filha (a filha recebe um dado da mãe)
   @Input() ID!: Number
 
-  @Output() EditOk: EventEmitter<any> = new EventEmitter()
+  @Output() EditOk: EventEmitter<any> = new EventEmitter() //relacionamento filha-mae (a filha emite um evento para a mãe)
+
+  //declaração de variáveis
 
   public form!: FormGroup
 
@@ -23,7 +25,7 @@ export class EditGlossarioComponent {
 
   ngOnInit() {
 
-    this.form = new FormGroup({
+    this.form = new FormGroup({ //validação de formulario
       id: new FormControl(this.ID, Validators.required),
       keyWord: new FormControl(this.info ? this.info.keyWord : '', Validators.required),
       description: new FormControl(this.info ? this.info.description : '', Validators.required),
@@ -33,11 +35,11 @@ export class EditGlossarioComponent {
 
   }
 
-  trade() {
+  trade() { // executa a visibilidade do componente edit-glossario -> edit() em list-glossario
     this.EditOk.emit()
   }
 
-  async onSubmit() {
+  async onSubmit() { //faz a edição do item
 
     const id = parseInt(this.ID.toString())
 
@@ -49,7 +51,7 @@ export class EditGlossarioComponent {
 
   }
 
-  date() {
+  date() { // gera a data de atualização
     const data = new Date();
 
     const DD = String(data.getDate()).padStart(2, "0") //pega o dia

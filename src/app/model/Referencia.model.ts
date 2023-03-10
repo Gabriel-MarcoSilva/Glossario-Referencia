@@ -1,7 +1,7 @@
 export class Referencia{
     constructor(
         public id: number,
-        public author: String,
+        public author:[{}],
         public title: String,
         public subtitle: String,
         public numEdition: number,

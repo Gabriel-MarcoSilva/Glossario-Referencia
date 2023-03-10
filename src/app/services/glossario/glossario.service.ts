@@ -35,14 +35,6 @@ export class GlossarioService {
     return this.http.put<FormGroup>(url, data)
   }
 
-  //listar palavra no glossario específico
-
-  getGlossarioById(id: String): Observable<Glossario> {
-    const url = `${this.baseUrl}/glossario/${id}`
-    return this.http.get<Glossario>(url)
-
-  }
-
   //deletar uma palavra no glossario (ok)
 
   deleteGlossario(id: Number) {
