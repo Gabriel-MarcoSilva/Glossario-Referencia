@@ -1,4 +1,4 @@
-.nav-cad-referencia{
+.nav-cad-referencia {
     display: grid;
     align-items: center;
     width: 100%;
@@ -9,15 +9,15 @@
     font-family: sans-serif;
 }
 
-.nav-cad-referencia h1{
+.nav-cad-referencia h1 {
     margin: 0;
 }
 
-.container-cad-referencia{
+.container-cad-referencia {
     padding: 10px;
     width: 40vw;
     height: 55vh;
-    box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
     background-color: #fff;
     border-radius: 0.5em;
     position: absolute;
@@ -27,7 +27,7 @@
     margin: 25vh auto;
 }
 
-.cad-form{
+.cad-form {
     display: grid;
     grid-template-columns: repeat(2, 18vw);
     grid-gap: 5px;
@@ -36,17 +36,38 @@
     justify-content: center;
 }
 
-.button-cad-material{
+.button-cad-material {
     height: 5vh;
 }
 
-.cad-button-form{
+.cad-button-form {
     display: flex;
     justify-content: end;
     gap: 20px;
 }
 
-hr{
+hr {
     border: 1px solid #cfcfcfb7;
 
+}
+
+@media (max-width: 800px) {
+    .container-cad-referencia {
+        width: 60vw;
+    }
+
+    .cad-form {
+        width: 100%;
+        grid-template-columns: repeat(2, 25vw);
+        gap: 5px 25px;
+    }
+
+    .button-cad-material {
+        height: 4.5vh;
+        margin-top: 2.5px;
+    }
+
+    mat-form-field {
+        height: 6.5vh;
+    }
 }

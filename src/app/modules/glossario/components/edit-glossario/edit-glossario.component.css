@@ -1,4 +1,4 @@
-.nav-cad-glossario{
+.nav-cad-glossario {
     display: grid;
     align-items: center;
     width: 100%;
@@ -9,15 +9,15 @@
     font-family: sans-serif;
 }
 
-.nav-cad-glossario h1{
+.nav-cad-glossario h1 {
     margin: 0;
 }
 
-.container-cad-glossario{
+.container-cad-glossario {
     padding: 10px;
     width: 20vw;
     height: 50vh;
-    box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
     background-color: #fff;
     border-radius: 0.5em;
     position: absolute;
@@ -27,7 +27,7 @@
     margin: 25vh auto;
 }
 
-.cad-form{
+.cad-form {
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -35,22 +35,23 @@
     height: 30vh;
 }
 
-.button-cad-material{
+.button-cad-material {
     height: 5vh;
 }
 
-.cad-button-form{
+.cad-button-form {
     display: flex;
     justify-content: end;
     gap: 20px;
 }
 
-hr{
+hr {
     border: 1px solid #cfcfcfb7;
-
+    margin-bottom: 3px;
 }
 
-.cancell, .confirm {
+.cancell,
+.confirm {
     background-color: transparent;
     border-radius: 0.25em;
     padding: 0.25em 0.75em;
@@ -59,13 +60,13 @@ hr{
     transition: 0.2s;
 }
 
-.cancell{
+.cancell {
     border: 1px solid #dc3545;
     color: #dc3545;
     box-shadow: 0 0 7px #dc354549;
 }
 
-.confirm{
+.confirm {
     border: 1px solid #28a745;
     color: #28a745;
     box-shadow: 0 0 7px #28a74549;
@@ -79,4 +80,15 @@ hr{
 .confirm:hover {
     color: #fff;
     background-color: #28a745;
+}
+
+@media (max-width: 800px) {
+    .container-cad-glossario {
+        width: 40vw;
+    }
+
+    .button-cad-material {
+        height: 4.5vh;
+        margin-top: 2.5px;
+    }
 }

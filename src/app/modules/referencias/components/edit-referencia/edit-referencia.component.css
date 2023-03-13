@@ -51,7 +51,8 @@ hr {
 
 }
 
-.cancell, .confirm {
+.cancell,
+.confirm {
     background-color: transparent;
     border-radius: 0.25em;
     padding: 0.25em 0.75em;
@@ -60,13 +61,13 @@ hr {
     transition: 0.2s;
 }
 
-.cancell{
+.cancell {
     border: 1px solid #dc3545;
     color: #dc3545;
     box-shadow: 0 0 7px #dc354549;
 }
 
-.confirm{
+.confirm {
     border: 1px solid #28a745;
     color: #28a745;
     box-shadow: 0 0 7px #28a74549;
@@ -80,4 +81,26 @@ hr {
 .confirm:hover {
     color: #fff;
     background-color: #28a745;
+}
+
+
+@media (max-width: 800px) {
+    .container-cad-referencia {
+        width: 60vw;
+    }
+
+    .cad-form {
+        width: 100%;
+        grid-template-columns: repeat(2, 25vw);
+        gap: 5px 25px;
+    }
+
+    .button-cad-material {
+        height: 4.5vh;
+        margin-top: 2.5px;
+    }
+
+    mat-form-field {
+        height: 6.5vh;
+    }
 }
