@@ -44,7 +44,8 @@ export class CadReferenciasComponent {
 
   async onSubmit() { //função que atribui valores para serem adicionados
 
-    this.author.push({ "name": this.form.controls["author"].value, "sobrenome": this.form.controls["authorSobrenome"].value }) //pega o valor do input e agrga em um json
+    //this.author.push({ "name": this.form.controls["author"].value, "sobrenome": this.form.controls["authorSobrenome"].value }) //pega o valor do input e agrga em um json
+    const author = this.form.controls["author"].value
     const publisher = this.form.controls["publisher"].value
     let Year = this.form.value ? this.form.controls["Year"].value : 0
     let numEdit = this.form.value ? this.form.controls["numEdit"].value : 0
@@ -58,7 +59,7 @@ export class CadReferenciasComponent {
     this.author.splice(0,1) //retira o primeiro item, pois a lista é inciada com um valor vazio [{}, {valores depois do submit}]
 
     //usa o modelo de referencia para gerar uma nova
-    this.referencia = new Referencia(await this.size, this.author, title, subtitle, parseInt(numEdit), publisher, created_at, "--", publication, parseInt(Pag), parseInt(Vol), parseInt(Year)) 
+    this.referencia = new Referencia(await this.size, author, title, subtitle, parseInt(numEdit), publisher, created_at, "--", publication, parseInt(Pag), parseInt(Vol), parseInt(Year)) 
 
     this.save() //chama a função save
   }
@@ -85,9 +86,9 @@ export class CadReferenciasComponent {
     return date
   }
 
-  newAuthor() { // é chamada pra adicionar + de um autor e deixar os campos vazios para que seja possível cadastrar um novo
+ /* newAuthor() { // é chamada pra adicionar + de um autor e deixar os campos vazios para que seja possível cadastrar um novo
     this.author.push({ "name": this.form.controls["author"].value, "sobrenome": this.form.controls["authorSobrenome"].value })
     this.form.controls["author"].reset()
     this.form.controls["authorSobrenome"].reset()
-  }
+  }*/
 }

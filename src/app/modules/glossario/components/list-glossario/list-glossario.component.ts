@@ -93,6 +93,7 @@ export class ListGlossarioComponent {
 
   Expandir(id: Number) { //mostra a descrição de forma dinâmica
     const ID = parseInt(id.toString()) - this.inicio
+    console.log(ID)
     const item = document.querySelectorAll(".itemDescription")[ID] as HTMLElement
 
     if (item.style.whiteSpace == "nowrap" || item.style.whiteSpace == "") {

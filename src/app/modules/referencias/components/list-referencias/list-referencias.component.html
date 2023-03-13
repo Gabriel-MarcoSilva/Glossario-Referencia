@@ -8,7 +8,7 @@
             <a class="material-icons" routerLink="/glossario"> arrow_forward </a>
         </section>
         <section class="search-item">
-            <button (click)="cad()">+ Nova referencia</button>
+            <button (click)="cad()"></button>
             <mat-form-field appearance="outline">
                 <mat-label>Buscar Referencia</mat-label>
                 <input matInput #input maxlength="10" placeholder="Autor/Título/Subtítulo" (input)="search($event)"
@@ -23,77 +23,58 @@
             <app-cad-referencias (CadOk)="cad()" [size]="nextId" (ld)="load()"></app-cad-referencias>
         </div>
     </section>
-    <table class="table table-hover ">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <!-- <th scope="col"></th> -->
-                <th scope="col">Autor</th>
-                <th scope="col" class="title">Referência</th>
-                <th class="icon" scope="col">Alterar</th>
-                <th class="icon" scope="col">Remover</th>
-            </tr>
-        </thead>
-    </table>
-    <div class="content-list">
-        <table class="table table-hover ">
-
-            <tbody *ngFor="let item of referencias; index as i">
-
-                <tr class="toShow" *ngIf="i < quantidade && i >= inicio">
-                    <td class="icon">
-                        {{i + 1}}
-                    </td>
-
-                    <td scope="row" style="width: 170px;" *ngIf="item.author.length < 4; else etAll">{{item.author}}
-                    </td>
-                    <ng-template #etAll>
-                        <td scope="row" style="width: 170px;">{{item.author[0]}}
-                            <span style="font-style: italic;"> et al </span>
-                        </td>
-
-                    </ng-template>
-                    <td scope="row" style="width: 170px;" class="title" (click)="Expandir(i)">
-                        <p class="itemDescription">
-                            <span style="text-transform: uppercase; "
-                                *ngIf="item.author.length < 4; else etAll2">{{item.author}} </span>
-                            <ng-template #etAll2>
-                                <span style="text-transform: uppercase; ">{{item.author[0]}} <span
-                                        style="font-style: italic; text-transform: lowercase;">et al </span></span>
-                            </ng-template>
-                            <span style="font-weight: 'bold';">{{item.title}}</span>
-                            <span *ngIf="item.subtitle">: {{item.subtitle}}. </span>
-                            <span *ngIf="item.numEdition">{{item.numEdition}} ed.</span>
-                            <span *ngIf="item.Vol"> Vol {{item.Vol}}.</span>
-                            <span *ngIf="item.Pag"> pág {{item.Pag}}.</span>
-                            <span *ngIf="item.publication"> {{item.publication}}.</span>
-                            <span *ngIf="item.publisher"> {{item.publisher}}.</span>
-                            <span *ngIf="item.Year"> {{item.Year}}.</span>
-                        </p>
-                    </td>
-
-                    <td class="icon" scope="row" style="display: flex; justify-content: space-evenly;">
-                        <a (click)="Edit(item.id)">
-                            <span class="material-icons" style="color: #6E867D; cursor: pointer;">
-                                edit
-                            </span>
-                        </a>
-                        <a (click)="delete(item.id)">
-                            <span class="material-icons" style="color: #e91f30; cursor: pointer;">
-                                delete
-                            </span>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}"
-            *ngIf="editOk">
-            <app-edit-referencia (EditOk)="edit()" [info]="value" [ID]="algo" *ngIf="editOk"></app-edit-referencia>
-        </div>
-
+    <div class="title-table">
+        <p>#</p>
+        <p>Autor</p>
+        <p>Referencias</p>
+        <p>Alterar</p>
+        <p>Remover</p>
     </div>
+    <div class="container-table" style="overflow-y: auto;">
+        
+        <div class="table" *ngFor="let item of referencias; index as i">
+    
+            <p class="icon" *ngIf="i < quantidade && i >= inicio">
+                {{i + 1}}
+            </p>
+    
+            <p *ngIf="i < quantidade && i >= inicio">{{item.author}}
+            </p>
+    
+            <p class="itemDescription"  *ngIf="i < quantidade && i >= inicio" (click)="Expandir(i)">
+                <span style="text-transform: uppercase; ">{{item.author}} </span>
+    
+                <span style="font-weight: 'bold';">{{item.title}}</span>
+                <span *ngIf="item.subtitle">: {{item.subtitle}}. </span>
+                <span *ngIf="item.numEdition">{{item.numEdition}} ed.</span>
+                <span *ngIf="item.Vol"> Vol {{item.Vol}}.</span>
+                <span *ngIf="item.Pag"> pág {{item.Pag}}.</span>
+                <span *ngIf="item.publication"> {{item.publication}}.</span>
+                <span *ngIf="item.publisher"> {{item.publisher}}.</span>
+                <span *ngIf="item.Year"> {{item.Year}}.</span>
+            </p>
+            <p *ngIf="i < quantidade && i >= inicio">
+                <a (click)="Edit(item.id)">
+                    <span class="material-icons" style="color: #6E867D; cursor: pointer;">
+                        edit
+                    </span>
+                </a>
+            </p>
+            <p *ngIf="i < quantidade && i >= inicio">
+                <a (click)="delete(item.id)">
+                    <span class="material-icons" style="color: #e91f30; cursor: pointer;">
+                        delete
+                    </span>
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <div [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}"
+        *ngIf="editOk">
+        <app-edit-referencia (EditOk)="edit()" [info]="value" [ID]="algo" *ngIf="editOk"></app-edit-referencia>
+    </div>
+
     <div class="button-list">
         <button (click)="back()" class="material-icons"> arrow_back </button>
         <button (click)="next()" class="material-icons"> arrow_forward </button>

@@ -22,44 +22,42 @@
             <app-cad-glossario (CadOk)="cad()" [size]="nextId" (ld)="load()"></app-cad-glossario>
         </div>
     </section>
-    <table class="table table-hover ">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <!-- <th scope="col"></th> -->
-                <th scope="col">Palavra-chave</th>
-                <th scope="col" class="title">Descrição</th>
-                <th class="icon" scope="col">Alterar</th>
-                <th class="icon" scope="col">Remover</th>
-            </tr>
-        </thead>
-    </table>
-    <div class="content-list">
+    <div class="title-table">
+        <p>#</p>
+        <p>Palavra-chave</p>
+        <p>Descrição</p>
+        <p>Alterar</p>
+        <p>Remover</p>
+    </div>
 
-        <table class="table table-hover ">
+    <div class="container-table" style="overflow-y: auto;">
+        
 
-            <tbody *ngFor="let item of it; index as i" style="overflow-y: auto;">
+        <div class="table" *ngFor="let item of itens; index as i" >
 
-                <tr class="toShow" *ngIf="i < quantidade && i >= inicio">
-                    <td class="icon">{{i+1}}</td>
-                    <td scope="row" style="width: 170px;">{{item.keyWord}}</td>
-                    <td scope="row" style="width: 170px;" class="title " (click)="Expandir(i)" ><p class="itemDescription">{{item.description}}</p></td>
+            <p class="icon" *ngIf="i < quantidade && i >= inicio">
+                {{i + 1}}
+            </p>
 
-                    <td class="icon" scope="row" style="display: flex; justify-content: space-evenly;">
-                        <a (click)="Edit(item.id)">
-                            <span class="material-icons" style="color: #6E867D; cursor: pointer;">
-                                edit
-                            </span>
-                        </a>
-                        <a (click)="delete(item.id)">
-                            <span class="material-icons" style="color: #e91f30; cursor: pointer;">
-                                delete
-                            </span>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+            <p *ngIf="i < quantidade && i >= inicio" style="text-align: start;">{{item.keyWord}}</p>
+            <p class="itemDescription" *ngIf="i < quantidade && i >= inicio" (click)="Expandir(i)" >{{item.description}}</p>
+
+            <p class="icon" *ngIf="i < quantidade && i >= inicio">
+                <a (click)="Edit(item.id)">
+                    <span class="material-icons" style="color: #6E867D; cursor: pointer;">
+                        edit
+                    </span>
+                </a>
+            </p>
+            <p class="icon" *ngIf="i < quantidade && i >= inicio">
+
+                <a (click)="delete(item.id)">
+                    <span class="material-icons" style="color: #e91f30; cursor: pointer;">
+                        delete
+                    </span>
+                </a>
+            </p>
+        </div>
         <div [style]="{position:'fixed', width:'100vw', height: '100vh', background:'rgba(0,0,0,0.3)', top: '0', left: '0', overflow:'hidden'}"
             *ngIf="editOk">
             <app-edit-glossario (EditOk)="edit()" [info]="value" [ID]="algo" *ngIf="editOk"></app-edit-glossario>
