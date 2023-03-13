@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Referencia } from 'src/app/model/Referencia.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReferenciasService {
 
-  public baseUrl = "http://localhost:4000"
+  public baseUrl = environment.apiUrl
 
   constructor(
     private http: HttpClient

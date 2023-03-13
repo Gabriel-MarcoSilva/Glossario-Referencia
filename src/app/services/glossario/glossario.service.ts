@@ -4,14 +4,14 @@ import { FormGroup } from '@angular/forms';
 import { take } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { Glossario } from 'src/app/model/Glossario.models';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GlossarioService {
 
-  private baseUrl = "http://localhost:4000"
-
+  private baseUrl = environment.apiUrl
   constructor(
     private http: HttpClient,
   ) { }

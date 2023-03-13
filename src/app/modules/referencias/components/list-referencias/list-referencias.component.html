@@ -38,7 +38,7 @@
                 {{i + 1}}
             </p>
     
-            <p *ngIf="i < quantidade && i >= inicio">{{item.author}}
+            <p *ngIf="i < quantidade && i >= inicio" class="autor">{{item.author}}
             </p>
     
             <p class="itemDescription"  *ngIf="i < quantidade && i >= inicio" (click)="Expandir(i)">

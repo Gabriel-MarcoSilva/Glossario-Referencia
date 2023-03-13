@@ -122,8 +122,6 @@ export class ListGlossarioComponent {
 
     const value = target.value.toLowerCase()
 
-    console.log(value)
-
     this.it = this.itens.filter((m) =>
       m.keyWord.toLowerCase().includes(value)
     )

@@ -8,10 +8,10 @@
             <a class="material-icons" routerLink="/referencias"> arrow_forward </a>
         </section>
         <section class="search-item">
-            <button (click)="cad()">+ Nova palavra</button>
+            <button (click)="cad()"></button>
             <mat-form-field appearance="outline">
                 <mat-label>Buscar Palavra</mat-label>
-                <input matInput #input maxlength="10" placeholder="Ex: Onomatopeia" (input)="search($event)"
+                <input matInput #input maxlength="10" placeholder="Ex: Embrapa" (input)="search($event)"
                     autocomplete="off" />
             </mat-form-field>
         </section>
@@ -22,6 +22,7 @@
             <app-cad-glossario (CadOk)="cad()" [size]="nextId" (ld)="load()"></app-cad-glossario>
         </div>
     </section>
+
     <div class="title-table">
         <p>#</p>
         <p>Palavra-chave</p>
@@ -31,15 +32,14 @@
     </div>
 
     <div class="container-table" style="overflow-y: auto;">
-        
 
-        <div class="table" *ngFor="let item of itens; index as i" >
+        <div class="table" *ngFor="let item of it; index as i" >
 
             <p class="icon" *ngIf="i < quantidade && i >= inicio">
                 {{i + 1}}
             </p>
 
-            <p *ngIf="i < quantidade && i >= inicio" style="text-align: start;">{{item.keyWord}}</p>
+            <p *ngIf="i < quantidade && i >= inicio" style="text-align: start;" class="keyword">{{item.keyWord}}</p>
             <p class="itemDescription" *ngIf="i < quantidade && i >= inicio" (click)="Expandir(i)" >{{item.description}}</p>
 
             <p class="icon" *ngIf="i < quantidade && i >= inicio">
