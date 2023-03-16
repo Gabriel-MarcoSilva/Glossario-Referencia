@@ -11,7 +11,9 @@ import { environment } from 'src/environments/environment';
 })
 export class GlossarioService {
 
-  private baseUrl = environment.apiUrl
+  public baseUrl = "http://localhost:4000"
+  //public baseUrl = environment.apiUrl
+
   constructor(
     private http: HttpClient,
   ) { }
