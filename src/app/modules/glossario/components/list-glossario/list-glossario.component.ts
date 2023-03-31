@@ -29,7 +29,7 @@ export class ListGlossarioComponent {
 
   constructor(
     private router: Router,
-    private service: GlossarioService
+    private service: GlossarioService,
   ) {
     this.load()
   }
@@ -124,6 +124,12 @@ export class ListGlossarioComponent {
     this.it = this.itens.filter((m) =>
       m.keyWord.toLowerCase().includes(value)
     )
+  }
+  
+  getById(id: Number){ //função que busca um id específico só tá aq pra eu aprender mesmo
+    this.service.getGlossarioById(id!).subscribe((res) => console.log(res))
+
+    this.Edit(id)
   }
 
   delete(id: Number) {// função delete que apaga um glossario e reinicia a página

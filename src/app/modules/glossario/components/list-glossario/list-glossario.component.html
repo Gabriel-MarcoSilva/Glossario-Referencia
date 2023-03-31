@@ -43,7 +43,7 @@
             <p class="itemDescription" *ngIf="i < quantidade && i >= inicio" (click)="Expandir(i)" >{{item.description}}</p>
 
             <p class="icon" *ngIf="i < quantidade && i >= inicio">
-                <a (click)="Edit(item.id)">
+                <a (click)="getById(item.id)">
                     <span class="material-icons" style="color: #6E867D; cursor: pointer;">
                         edit
                     </span>

@@ -24,6 +24,10 @@ export class GlossarioService {
     return this.http.get<Glossario[]>(`${this.baseUrl}/glossario`)
   }
 
+  getGlossarioById(id: Number): Observable<Glossario>{
+    return this.http.get<Glossario>(`${this.baseUrl}/glossario/${id}`)
+  }
+
   //cadastro de novo glossario (ok)
 
   setGlossario(data: any): Observable<Glossario> {
